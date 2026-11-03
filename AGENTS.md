@@ -7,3 +7,9 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## React file structure
+
+- Declarations first: put variables, types, constants and module-level configuration at the top of the file. Plain helper functions belong here too, or in `src/lib` when they are reusable.
+- The exported component is the first component in the file.
+- Supporting components (helpers and subcomponents) follow the exported component.

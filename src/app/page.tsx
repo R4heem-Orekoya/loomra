@@ -1,6 +1,7 @@
 import { PlayIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import HeroGlobe from "@/components/hero-globe";
+import HowItWorks from "@/components/how-it-works";
 import { LogoMarquee, type MarqueeLogo } from "@/components/logo-marquee";
 import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
@@ -175,7 +176,7 @@ export default function Home() {
             <HeroGlobe />
 
             <section aria-label="Trusted by" className="w-full py-4">
-               <p className="mb-6 text-center text-sm font-semibold text-foreground/70 tracking-tight">
+               <p className="mb-6 text-center text-sm font-semibold text-foreground/80 tracking-tight">
                   Trusted by finance teams at
                </p>
 
@@ -187,6 +188,8 @@ export default function Home() {
                   className="mx-auto max-w-5xl"
                />
             </section>
+
+            <HowItWorks />
          </main>
       </>
    );

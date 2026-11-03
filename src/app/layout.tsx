@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, Inter } from "next/font/google";
+import { Geist_Mono, Instrument_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -8,6 +8,12 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const instrumentSans = Instrument_Sans({
    variable: "--font-heading",
    subsets: ["latin"],
+});
+
+// Tabular, unambiguous numerals for the money UI.
+const geistMono = Geist_Mono({
+   variable: "--font-geist-mono",
+   subsets: ["latin", "latin-ext"],
 });
 
 export const metadata: Metadata = {
@@ -24,6 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             "antialiased",
             inter.variable,
             instrumentSans.variable,
+            geistMono.variable,
          )}
       >
          <body className="min-h-full flex flex-col">{children}</body>
