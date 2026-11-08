@@ -1,7 +1,11 @@
+import { formatUsd, transferFee } from "@/lib/fees";
 import { cn } from "@/lib/utils";
 
 const card =
    "absolute hidden w-40 select-none rounded-2xl border border-border/70 bg-card p-3 shadow-[0_24px_50px_-28px_rgb(0_0_0_/_0.35)] animate-float motion-reduce:animate-none lg:block";
+
+/** Fee shown on the floating cards, for the same $1,240 transfer. */
+const SAMPLE_FEE = formatUsd(transferFee(1240));
 
 /**
  * Floating fintech fragments that orbit the hero copy: a transfer, a live rate,
@@ -74,7 +78,7 @@ export default function HeroDecor() {
                $1,240<span className="text-muted-foreground">.00</span>
             </p>
             <p className="text-[8px] text-muted-foreground">
-               No fees · arrives in seconds
+               No hidden fees · arrives in seconds
             </p>
          </div>
 
@@ -118,7 +122,7 @@ export default function HeroDecor() {
             <p className="flex items-center justify-between text-[8px] text-muted-foreground">
                <span>2 seconds</span>
                <span className="text-emerald-600 dark:text-emerald-400">
-                  $0.00 fee
+                  {SAMPLE_FEE} fee
                </span>
             </p>
          </div>

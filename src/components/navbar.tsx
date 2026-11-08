@@ -45,7 +45,7 @@ export default function Navbar() {
    });
 
    return (
-      <header className="sticky top-0 z-50 flex w-full justify-center px-4">
+      <header className="sticky top-0 z-50 flex w-full bg-transparent justify-center px-4">
          <motion.nav
             aria-label="Main navigation"
             initial={false}
@@ -62,36 +62,38 @@ export default function Navbar() {
                     }
             }
             className={cn(
-               "relative flex h-10 mt-1 w-full items-center justify-between border transition-[background-color,border-color,box-shadow] ease-out",
+               "flex h-11 mt-1 w-full items-center justify-between border transition-[background-color,border-color,box-shadow] ease-out",
                scrolled
                   ? "duration-500 border-border/80 dark mt-4 bg-background/80 text-foreground backdrop-blur-md shadow-[0_12px_40px_-12px_rgb(0_0_0/0.18)]"
                   : "duration-150 border-transparent bg-transparent shadow-none",
             )}
          >
-            <ul className="hidden items-center gap-6 text-xs font-medium tracking-tight md:flex">
-               <li>
-                  <Link href="#">What we do</Link>
-               </li>
-               <li>
-                  <Link href="#">Who we serve</Link>
-               </li>
-               <li>
-                  <Link href="#">About us</Link>
-               </li>
-            </ul>
+            <div className="flex items-center gap-12">
+               <div className="font-heading text-xl font-semibold tracking-tighter">
+                  L<span className="">oo</span>mra
+               </div>
 
-            <div className="absolute left-1/2 -translate-x-1/2 font-heading font-semibold tracking-tighter">
-               L<span className="">oo</span>mra
+               <ul className="hidden items-center gap-6 text-sm text-muted-foreground font-medium tracking-tight md:flex">
+                  <li>
+                     <Link href="#capabilities">The account</Link>
+                  </li>
+                  <li>
+                     <Link href="#fees">Pricing</Link>
+                  </li>
+                  <li>
+                     <Link href="#security">Security</Link>
+                  </li>
+               </ul>
             </div>
 
-            <div className="absolute right-1 ml-auto flex items-center gap-4">
+            <div className="flex items-center gap-4">
                <Link
                   href="#"
                   className="hidden text-xs font-medium sm:inline-flex"
                >
                   Login
                </Link>
-               <Button className={scrolled ? "dark bg-foreground" : ""}>
+               <Button size="lg" className={scrolled ? "dark bg-foreground" : ""}>
                   Open an account
                </Button>
             </div>

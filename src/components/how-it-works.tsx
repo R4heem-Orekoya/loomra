@@ -3,7 +3,13 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { Squircle } from "@squircle-js/react";
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { formatUsd, transferFee } from "@/lib/fees";
 import { cn } from "@/lib/utils";
+import Phone from "./phone";
+
+/** The example transfer shown on every phone screen. */
+const SEND_AMOUNT = 1240;
+const SEND_FEE = formatUsd(transferFee(SEND_AMOUNT));
 
 type Step = {
    number: string;
@@ -319,39 +325,6 @@ function HomeIndicator() {
    );
 }
 
-function Phone({
-   crop,
-   children,
-}: {
-   crop: "top" | "bottom";
-   children: ReactNode;
-}) {
-   return (
-      <div
-         className={cn(
-            "absolute left-1/2 w-[78%] -translate-x-1/2 transition-transform duration-500 ease-out group-hover:-translate-y-1.5 motion-reduce:transition-none",
-            crop === "top" ? "top-6" : "-bottom-72",
-         )}
-      >
-         <Squircle
-            cornerRadius={45}
-            cornerSmoothing={0.8}
-            className="bg-[#0a0a0b] p-[4.5px] shadow-[0_45px_80px_-40px_rgba(0,0,0,0.65)] ring-1 ring-black/15"
-         >
-            <Squircle
-               cornerRadius={41.5}
-               cornerSmoothing={0.8}
-               className="relative h-[480px] overflow-hidden rounded-[2.8rem] bg-white text-neutral-900"
-            >
-               {children}
-            </Squircle>
-         </Squircle>
-      </div>
-   );
-}
-
-/* ------------------------------ Screens ------------------------------ */
-
 function SendScreen() {
    const keypad = [
       "1",
@@ -381,7 +354,7 @@ function SendScreen() {
                <span className="absolute left-1/2 -translate-x-1/2 text-sm font-semibold tracking-tighter font-heading text-neutral-900">
                   Send money
                </span>
-               <span className="text-[10px] leading-0 tracking-tight text-[#0BCC51]">
+               <span className="text-[10px] leading-0 tracking-tight text-[#0D5C3A]">
                   History
                </span>
             </div>
@@ -428,7 +401,7 @@ function SendScreen() {
                   </div>
                </div>
 
-               <div className="mt-2 rounded-xl border-2 border-[#0BCC51]/50 bg-white p-3 pb-2">
+               <div className="mt-2 rounded-xl border-2 border-[#0D5C3A]/50 bg-white p-3 pb-2">
                   <div className="flex items-baseline">
                      <span className="font-sans text-[clamp(20px,8.5cqw,28px)] leading-none font-semibold tracking-tight text-neutral-900">
                         $1,240
@@ -442,7 +415,7 @@ function SendScreen() {
                      <span className="font-medium tracking-tight">
                         Fee{" "}
                         <span className="font-semibold font-sans text-emerald-600">
-                           $0.00
+                           {SEND_FEE}
                         </span>
                      </span>
                      <span className="text-[10px] font-medium tracking-tight">
@@ -498,8 +471,7 @@ function ConvertScreen() {
                Amara receives
             </p>
             <p className="mt-1 text-center font-sans text-[clamp(20px,8cqw,28px)] leading-none font-semibold tracking-tight text-neutral-900">
-               ₦
-               1,890,000
+               ₦ 1,890,000
             </p>
             <p className="mt-1 text-center text-[10px] font-medium tracking-tight text-neutral-500">
                from{" "}
@@ -523,12 +495,12 @@ function ConvertScreen() {
                      Fee
                   </span>
                   <span className="font-sans text-[11px] font-semibold tracking-tight text-emerald-600">
-                     $0.00
+                     {SEND_FEE}
                   </span>
                </div>
             </div>
 
-            <div className="mt-2.5 rounded-full bg-[#0BCC51] py-2 text-center text-[12px] font-semibold tracking-tight text-white shadow-[0_10px_24px_-12px_rgba(11,204,81,0.9)]">
+            <div className="mt-2.5 rounded-full bg-[#0D5C3A] py-2 text-center text-[12px] font-semibold tracking-tight text-white shadow-[0_10px_24px_-12px_rgba(13,92,58,0.9)]">
                Continue
             </div>
             <p className="mt-1.5 text-center text-[9px] font-medium tracking-tight text-neutral-500">
@@ -552,8 +524,7 @@ function ConfirmScreen() {
                   Amara receives
                </p>
                <p className="mt-1 font-sans text-[clamp(16px,5.5cqw,20px)] leading-none font-semibold tracking-tight text-neutral-900">
-                  ₦
-                  1,890,000
+                  ₦ 1,890,000
                </p>
             </div>
          </div>
@@ -592,7 +563,7 @@ function ConfirmScreen() {
                      Transfer fee
                   </span>
                   <span className="font-sans text-[11px] font-semibold tracking-tight text-emerald-600">
-                     $0.00
+                     {SEND_FEE}
                   </span>
                </div>
                <div className="mt-1 flex items-center justify-between gap-2 border-t border-neutral-200/80 pt-1.5">
@@ -606,7 +577,7 @@ function ConfirmScreen() {
                </div>
             </div>
 
-            <div className="mt-2.5 rounded-full bg-[#0BCC51] py-2 text-center text-[12px] font-semibold tracking-tight text-white shadow-[0_10px_24px_-12px_rgba(11,204,81,0.9)]">
+            <div className="mt-2.5 rounded-full bg-[#0D5C3A] py-2 text-center text-[12px] font-semibold tracking-tight text-white shadow-[0_10px_24px_-12px_rgba(13,92,58,0.9)]">
                Confirm &amp; send
             </div>
             <p className="mt-1 flex items-center justify-center gap-1 text-center text-[9px] font-medium tracking-tight whitespace-nowrap text-neutral-500">

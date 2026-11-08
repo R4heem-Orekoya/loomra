@@ -2,7 +2,7 @@
 
 import createGlobe from "cobe";
 import Image from "next/image";
-import { type CSSProperties, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 type Currency = {
    id: string;
@@ -18,11 +18,6 @@ type Projected = {
    x: number;
    y: number;
    visible: boolean;
-};
-
-type StickerStyle = CSSProperties & {
-   "--x"?: string;
-   "--y"?: string;
 };
 
 const LAGOS: [number, number] = [6.52, 3.38];
@@ -47,7 +42,6 @@ const CURRENCIES: Currency[] = [
       code: "GBP",
       flag: "gb",
       location: [51.51, -0.13],
-      nudgeX: -40,
       rotate: -3,
    },
    {
@@ -55,7 +49,6 @@ const CURRENCIES: Currency[] = [
       code: "CHF",
       flag: "ch",
       location: [47.37, 8.54],
-      nudgeX: 40,
       rotate: 7,
    },
    {
@@ -98,6 +91,10 @@ const MARKER_ELEVATION = 0.02;
 const MARKER_RADIUS = 0.8 + MARKER_ELEVATION;
 const DEG = Math.PI / 180;
 
+/** Sticker boxes are 36px wide; keep at least this much between their centres. */
+const STICKER_GAP = 46;
+const STICKER_INSET = 38;
+
 const globeMask =
    "linear-gradient(to bottom, transparent 0%, black 32px, black 52%, transparent 100%)";
 
@@ -109,6 +106,10 @@ const ARCS = ROUTES.map(([from, to]) => ({
    from: locationById.get(from) ?? LAGOS,
    to: locationById.get(to) ?? LAGOS,
 }));
+
+function clamp(value: number, min: number, max: number) {
+   return Math.min(Math.max(value, min), max);
+}
 
 /**
  * Mirrors cobe's marker projection so labels can be positioned without relying
@@ -167,8 +168,8 @@ export default function HeroGlobe() {
          mapSamples: 20000,
          mapBrightness: 6,
          baseColor: [0.93, 1, 0.95],
-         markerColor: [0.043, 0.8, 0.318], // #0BCC51
-         glowColor: [0.043, 0.8, 0.318],
+         markerColor: [0.051, 0.361, 0.227], // #0D5C3A
+         glowColor: [0.051, 0.361, 0.227], // #0D5C3A
          markerElevation: MARKER_ELEVATION,
          arcColor: [0.98, 0.35, 0.1], // warm coral, contrasts the green globe
          arcWidth: 0.8,
@@ -181,14 +182,39 @@ export default function HeroGlobe() {
       });
 
       const paintStickers = (currentPhi: number) => {
-         for (const currency of CURRENCIES) {
-            const sticker = stickerRefs.current[currency.id];
+         const width = canvas.offsetWidth;
+         const points = CURRENCIES.map((currency) => {
+            const { x, y, visible } = project(currency.location, currentPhi);
+            return {
+               id: currency.id,
+               x: x * width + (currency.nudgeX ?? 0),
+               y: y * width,
+               visible,
+            };
+         });
+
+         // Zurich, Frankfurt and London project within a few pixels of each
+         // other, so fan their labels out whenever they start to stack.
+         const euro = points.find((point) => point.id === "eur");
+         if (euro) {
+            euro.x = clamp(euro.x, STICKER_INSET, width - STICKER_INSET);
+            for (const point of points) {
+               if (point.id === "gbp") {
+                  point.x = Math.min(point.x, euro.x - STICKER_GAP);
+               }
+               if (point.id === "chf") {
+                  point.x = Math.max(point.x, euro.x + STICKER_GAP);
+               }
+            }
+         }
+
+         for (const point of points) {
+            const sticker = stickerRefs.current[point.id];
             if (!sticker) continue;
 
-            const { x, y, visible } = project(currency.location, currentPhi);
-            sticker.style.setProperty("--x", `${x * 100}%`);
-            sticker.style.setProperty("--y", `${y * 100}%`);
-            sticker.style.opacity = visible ? "1" : "0";
+            sticker.style.left = `${clamp(point.x, STICKER_INSET, width - STICKER_INSET)}px`;
+            sticker.style.top = `${point.y}px`;
+            sticker.style.opacity = point.visible ? "1" : "0";
          }
       };
 
@@ -229,17 +255,15 @@ export default function HeroGlobe() {
                      ref={(element) => {
                         stickerRefs.current[currency.id] = element;
                      }}
-                     style={
-                        {
-                           position: "absolute",
-                           left: `clamp(38px, calc(var(--x, 50%) + ${currency.nudgeX ?? 0}px), calc(100% - 38px))`,
-                           top: "var(--y, 50%)",
-                           translate: "-50% calc(-100% - 10px)",
-                           rotate: `${currency.rotate}deg`,
-                           opacity: 0,
-                           transition: "opacity 0.25s ease",
-                        } as StickerStyle
-                     }
+                     style={{
+                        position: "absolute",
+                        left: "50%",
+                        top: "50%",
+                        translate: "-50% calc(-100% - 10px)",
+                        rotate: `${currency.rotate}deg`,
+                        opacity: 0,
+                        transition: "opacity 0.25s ease",
+                     }}
                      className="pointer-events-none flex w-9 flex-col items-center"
                   >
                      <Image

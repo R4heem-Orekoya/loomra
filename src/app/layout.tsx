@@ -27,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
          lang="en"
          className={cn(
             "h-full",
-            "antialiased",
+            "antialiased tracking-tight",
             inter.variable,
             instrumentSans.variable,
             geistMono.variable,

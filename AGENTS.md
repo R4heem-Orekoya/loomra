@@ -1,4 +1,13 @@
-<!-- BEGIN:nextjs-agent-rules -->
+## This is a landing page prototype for a product called Loomra
+
+Loomra is a fintech product like the likes of wise, raenest e.t.c It let's you hold money in
+various currencies USD, EUR, GBP, YEN, NGN e.t.c and let's you send money to various countries across the globe. It also offers virtual cards that can be used for digital spending, be it shopping, saas subscription 
+
+
+
+
+
+
 
 ## This is NOT the Next.js you know
 
