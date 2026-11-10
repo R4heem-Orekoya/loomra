@@ -1,3 +1,12 @@
+"use client";
+
+import {
+   Accordion,
+   AccordionContent,
+   AccordionItem,
+   AccordionTrigger,
+} from "@/components/ui/accordion";
+
 type FaqItem = {
    question: string;
    answer: string;
@@ -45,7 +54,7 @@ export default function Faq() {
       >
          <div className="mx-auto w-full max-w-6xl px-6">
             <header className="mx-auto max-w-2xl text-center">
-               <span className="text-sm font-semibold text-foreground/80 tracking-tight">
+               <span className="text-sm font-semibold tracking-tight text-foreground/80">
                   Questions
                </span>
                <h2
@@ -56,29 +65,25 @@ export default function Faq() {
                </h2>
             </header>
 
-            <div className="mx-auto mt-12 max-w-2xl border-t border-neutral-200/70">
-               {ITEMS.map((item, index) => (
-                  <details
+            <Accordion
+               defaultValue={[ITEMS[0].question]}
+               className="mx-auto mt-12 max-w-2xl gap-0 rounded-none border-x-0 border-t border-b-0 border-neutral-200/70"
+            >
+               {ITEMS.map((item) => (
+                  <AccordionItem
                      key={item.question}
-                     open={index === 0}
-                     className="group border-b border-neutral-200/70"
+                     value={item.question}
+                     className="border-b border-neutral-200/70 data-open:bg-transparent"
                   >
-                     <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 font-heading text-sm font-medium tracking-tight outline-none transition-colors hover:text-neutral-600 focus-visible:text-neutral-600 [&::-webkit-details-marker]:hidden">
+                     <AccordionTrigger className="cursor-pointer items-center gap-6 border-0 px-0 py-5 font-heading text-sm font-medium tracking-tight transition-colors hover:text-neutral-600 hover:no-underline focus-visible:text-neutral-600">
                         {item.question}
-                        <span
-                           aria-hidden="true"
-                           className="relative size-3.5 shrink-0 text-neutral-500"
-                        >
-                           <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-current" />
-                           <span className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-current transition-transform duration-200 group-open:scale-y-0" />
-                        </span>
-                     </summary>
-                     <p className="max-w-xl pb-5 text-pretty text-sm leading-relaxed text-muted-foreground">
+                     </AccordionTrigger>
+                     <AccordionContent className="-mx-2 max-w-xl pt-0 pb-5 text-pretty text-sm leading-relaxed text-muted-foreground">
                         {item.answer}
-                     </p>
-                  </details>
+                     </AccordionContent>
+                  </AccordionItem>
                ))}
-            </div>
+            </Accordion>
 
             <p className="mx-auto mt-8 max-w-2xl text-center text-xs text-muted-foreground">
                Still deciding?{" "}

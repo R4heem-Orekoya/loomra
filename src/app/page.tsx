@@ -1,3 +1,4 @@
+import Faq from "@/components/faq";
 import Navbar from "@/components/navbar";
 import SecurityTrust from "@/components/security-trust";
 import Testimonials from "@/components/testimonials";
@@ -6,6 +7,7 @@ import FeesComparison from "@/sections/fees-comparison";
 import GetPaid from "@/sections/get-paid";
 import Hero from "@/sections/hero";
 import LogoWall from "@/sections/logo-wall";
+import UsedBy from "@/sections/used-by";
 
 export default function Home() {
    return (
@@ -25,9 +27,11 @@ export default function Home() {
 
             <Testimonials />
 
-            {/* <Faq />
+            <UsedBy />
 
-            <ClosingCta /> */}
+            <Faq />
+
+            {/* <ClosingCta /> */}
          </main>
          {/* <Footer /> */}
       </>
