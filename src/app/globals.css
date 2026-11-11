@@ -122,6 +122,11 @@
 }
 
 @theme inline {
+   /* The closing field: a cool, green-tinted end-matter surface. */
+   --color-paper: #e9f0e9;
+   --color-paper-ink: #121712;
+   --color-paper-muted: #5f6a5e;
+
    --color-surface: var(--surface);
    --color-surface-inset: var(--surface-inset);
    --color-surface-chip: var(--surface-chip);
@@ -179,6 +184,23 @@
    50% {
       transform: translateY(-10px);
    }
+}
+
+@keyframes marquee {
+   from {
+      transform: translateX(0);
+   }
+   to {
+      transform: translateX(-25%);
+   }
+}
+
+.marquee-track {
+   animation: marquee 65s linear infinite;
+}
+
+.marquee-track:hover {
+   animation-play-state: paused;
 }
 
 body {
@@ -372,7 +394,8 @@ html.dark {
    .float-y,
    .blob-pulse,
    .tab-pill-stretch,
-   .panel-in {
+   .panel-in,
+   .marquee-track {
       animation: none;
    }
 
