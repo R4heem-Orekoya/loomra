@@ -207,6 +207,29 @@ body {
    font-family: var(--font-sans);
 }
 
+/* Lenis smooth scroll — mirrors lenis/dist/lenis.css so the root scroll
+   container keeps working once Lenis takes over the wheel. */
+html.lenis,
+html.lenis body {
+   height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+   overflow: clip;
+}
+
+.lenis [data-lenis-prevent],
+.lenis [data-lenis-prevent-wheel],
+.lenis [data-lenis-prevent-touch],
+.lenis [data-lenis-prevent-vertical],
+.lenis [data-lenis-prevent-horizontal] {
+   overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+   pointer-events: none;
+}
+
 :root {
    --background: oklch(1 0 0);
    --foreground: oklch(0.145 0 0);

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Instrument_Sans, Inter } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "@/components/smooth-scroll";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -28,14 +29,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
          lang="en"
          className={cn(
             "h-full",
-            "scroll-smooth motion-reduce:scroll-auto",
             "antialiased tracking-tight",
             inter.variable,
             instrumentSans.variable,
             geistMono.variable,
          )}
       >
-         <body className="min-h-full flex flex-col">{children}</body>
+         <body className="min-h-full flex flex-col">
+            <SmoothScroll>{children}</SmoothScroll>
+         </body>
       </html>
    );
 }
