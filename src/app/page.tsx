@@ -1,14 +1,14 @@
-import ClosingCta from "@/components/closing-cta";
-import Faq from "@/components/faq";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
-import SecurityTrust from "@/components/security-trust";
-import Testimonials from "@/components/testimonials";
 import Capabilities from "@/sections/capabilities";
+import ClosingCta from "@/sections/closing-cta";
+import Faq from "@/sections/faq";
 import FeesComparison from "@/sections/fees-comparison";
 import GetPaid from "@/sections/get-paid";
 import Hero from "@/sections/hero";
 import LogoWall from "@/sections/logo-wall";
+import SecurityTrust from "@/sections/security-trust";
+import Testimonials from "@/sections/testimonials";
 import UsedBy from "@/sections/used-by";
 
 export default function Home() {
