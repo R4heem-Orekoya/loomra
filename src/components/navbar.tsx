@@ -17,9 +17,21 @@ const SCROLL_THRESHOLD = 16;
 const NAV_LINK =
    "text-foreground transition-colors group-hover/nav:not-hover:text-muted-foreground";
 
+/** Seconds for one nav state to become the other. Geometry springs over this
+ *  and the chrome fades over the same clock, so both directions match. */
+const MORPH_DURATION = 0.4;
+
+/**
+ * The bar and pill differ in geometry (width, radius, padding, top offset) and
+ * in chrome (blur, background, border, shadow). Geometry morphs with a spring;
+ * chrome is a CSS transition on the same clock. `marginTop` lives here, not on
+ * `className`, so the nav glides up and down instead of snapping between the
+ * two offsets.
+ */
 const navbarVariants = {
    bar: {
       maxWidth: 1152,
+      marginTop: 4,
       borderRadius: 0,
       paddingLeft: 0,
       paddingRight: 0,
@@ -27,6 +39,7 @@ const navbarVariants = {
    },
    pill: {
       maxWidth: 860,
+      marginTop: 16,
       borderRadius: 9999,
       paddingLeft: 20,
       paddingRight: 20,
@@ -58,18 +71,14 @@ export default function Navbar() {
             transition={
                reduceMotion
                   ? { duration: 0 }
-                  : {
-                       type: "spring",
-                       stiffness: 380,
-                       damping: 34,
-                       mass: 0.9,
-                    }
+                  : { type: "spring", duration: MORPH_DURATION, bounce: 0 }
             }
             className={cn(
-               "flex h-11 mt-1 w-full items-center justify-between border transition-[background-color,border-color,box-shadow] ease-out",
+               "flex h-11 w-full items-center justify-between border transition-[background-color,border-color,box-shadow] ease-out",
+               reduceMotion ? "duration-0" : "duration-[400ms]",
                scrolled
-                  ? "duration-500 border-border/80 dark mt-4 bg-background/80 text-foreground backdrop-blur-md shadow-[0_12px_40px_-12px_rgb(0_0_0/0.18)]"
-                  : "duration-150 border-transparent bg-transparent shadow-none",
+                  ? "border-border/80 bg-background/80 text-foreground shadow-[0_12px_40px_-12px_rgb(0_0_0/0.18)] dark"
+                  : "border-transparent bg-transparent shadow-none",
             )}
          >
             <div className="flex items-center gap-12">
