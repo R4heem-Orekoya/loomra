@@ -98,7 +98,7 @@ export default function Faq() {
          aria-labelledby="faq-heading"
          className="scroll-mt-24 border-t border-border/60 py-24 lg:py-32"
       >
-         <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 lg:grid-cols-[minmax(0,25rem)_minmax(0,1fr)] lg:gap-16">
+         <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)] lg:gap-20">
             <header className="lg:sticky lg:top-28 lg:self-start">
                <h2
                   id="faq-heading"
@@ -131,7 +131,7 @@ export default function Faq() {
                   Still deciding?{" "}
                   <a
                      href="mailto:hello@loomra.com"
-                     className="font-medium text- underline-offset-4 hover:underline"
+                     className="font-medium text-foreground underline-offset-4 hover:underline"
                   >
                      Talk to a human.
                   </a>{" "}
@@ -139,7 +139,7 @@ export default function Faq() {
                </p>
             </header>
 
-            <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-10 mt-6">
                {GROUPS.map((group, index) => (
                   <FaqGroup
                      key={group.label}
@@ -164,21 +164,19 @@ function FaqGroup({
 }) {
    return (
       <div>
-         <h3 className="text-sm font-medium text-muted-foreground">
-            {group.label}
-         </h3>
+         <h3 className="text-lg font-medium font-heading">{group.label}</h3>
 
          <Accordion
             defaultValue={defaultOpen ? [defaultOpen] : undefined}
-            className="mt-3 rounded-none border-x-0 border-t border-b-0 border-neutral-200/70"
+            className="mt-3 rounded-none border-x-0 border-t border-b-0 border-border/70"
          >
             {group.items.map((item) => (
                <AccordionItem
                   key={item.question}
                   value={item.question}
-                  className="border-b border-neutral-200/70 data-open:bg-transparent"
+                  className="border-b border-border/70 data-open:bg-transparent"
                >
-                  <AccordionTrigger className="cursor-pointer items-center gap-6 border-0 px-0 py-4 font-heading text-base font-medium tracking-tight transition-colors hover:text-neutral-600 hover:no-underline focus-visible:text-neutral-600">
+                  <AccordionTrigger className="cursor-pointer items-center gap-6 border-0 px-0 py-4 text-sm font-medium tracking-tight transition-colors hover:text-neutral-600 hover:no-underline focus-visible:text-neutral-600">
                      {item.question}
                   </AccordionTrigger>
                   <AccordionContent className="-mx-2 max-w-xl pt-0 pb-5 text-pretty text-sm leading-relaxed text-muted-foreground">
