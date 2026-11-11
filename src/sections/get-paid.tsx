@@ -91,7 +91,7 @@ export default function GetPaid() {
                         </div>
 
                         <div className="flex flex-1 flex-col px-0.5 pt-2.5">
-                           <span className="text-[11px] font-medium tabular-nums tracking-tight text-muted-foreground">
+                           <span className="text-xs font-medium tabular-nums tracking-tight text-muted-foreground">
                               {step.number}
                            </span>
                            <h3 className="mt-0.5 font-heading text-lg font-medium tracking-tighter">
@@ -249,7 +249,7 @@ function AccountsArt() {
             <span className="text-[9px] font-medium text-muted-foreground">
                Account details
             </span>
-            <span className="text-[9px] font-semibold text-blue-600/80 dark:text-blue-400/80">
+            <span className="text-[9px] font-semibold text-blue-700 dark:text-blue-400">
                Share
             </span>
          </div>

@@ -18,7 +18,7 @@ const RATE = 0.9214;
 const PRESETS = [500, 1000, 2500];
 
 const ROWS: FeeRow[] = [
-   { label: "Transfer fee", loomra: "%1.5 capped at $20", bank: "$25–$45" },
+   { label: "Transfer fee", loomra: "1.5% capped at $20", bank: "$25–$45" },
    { label: "Exchange-rate markup", loomra: "0%", bank: "4–5%" },
    { label: "Hidden fees", loomra: "None", bank: "Common" },
    { label: "Time to arrive", loomra: "Seconds", bank: "1–3 business days" },
@@ -110,7 +110,7 @@ export default function FeesComparison() {
                            >
                               You send
                            </label>
-                           <span className="inline-flex items-center gap-1.5 rounded-full border bg-neutral-50 py-[3px] pr-2 pl-[3px] text-[11px] font-medium tracking-tight">
+                           <span className="inline-flex items-center gap-1.5 rounded-full border bg-neutral-50 py-[3px] pr-2 pl-[3px] text-xs font-medium tracking-tight">
                               <Image
                                  src="/flags/us.svg"
                                  alt=""
@@ -190,7 +190,7 @@ export default function FeesComparison() {
                                  type="button"
                                  onClick={() => setAmount(String(preset))}
                                  aria-pressed={sent === preset}
-                                 className="cursor-pointer rounded-full border border-neutral-200/80 px-2.5 py-1 text-[11px] font-medium tracking-tight text-muted-foreground transition-colors hover:border-neutral-300 hover:text-foreground aria-pressed:border-neutral-900 aria-pressed:bg-neutral-900 aria-pressed:text-white"
+                                 className="cursor-pointer rounded-full border border-neutral-200/80 px-2.5 py-1 text-xs font-medium tracking-tight text-muted-foreground transition-colors hover:border-neutral-300 hover:text-foreground aria-pressed:border-neutral-900 aria-pressed:bg-neutral-900 aria-pressed:text-white"
                               >
                                  ${preset.toLocaleString("en-US")}
                               </button>
@@ -204,7 +204,7 @@ export default function FeesComparison() {
                               They receive
                            </span>
 
-                           <span className="inline-flex items-center gap-1.5 rounded-full border bg-neutral-50 py-[3px] pr-2 pl-[3px] text-[11px] font-medium tracking-tight">
+                           <span className="inline-flex items-center gap-1.5 rounded-full border bg-neutral-50 py-[3px] pr-2 pl-[3px] text-xs font-medium tracking-tight">
                               <Image
                                  src="/flags/eu.svg"
                                  alt=""
@@ -242,14 +242,14 @@ export default function FeesComparison() {
                            </span>
                         </div>
 
-                        <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
+                        <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
                            Converted and sent in seconds. The fee is shown up
                            front and capped at $20.
                         </p>
                      </div>
                   </div>
 
-                  <dl className="grid grid-cols-3 divide-x divide-neutral-200/80 border-t border-neutral-200/80 bg-neutral-50 text-[11px]">
+                  <dl className="grid grid-cols-3 divide-x divide-neutral-200/80 border-t border-neutral-200/80 bg-neutral-50 text-xs">
                      <div className="px-4 py-3 sm:px-5">
                         <dt className="text-muted-foreground">Rate</dt>
                         <dd className="mt-0.5 font-medium tracking-tight tabular-nums">
@@ -259,7 +259,7 @@ export default function FeesComparison() {
                      <div className="px-4 py-3 sm:px-5">
                         <dt className="text-muted-foreground">Transfer fee</dt>
                         <dd className="mt-0.5 font-medium tracking-tight tabular-nums">
-                           %1.5 capped at $20
+                           1.5% capped at $20
                         </dd>
                      </div>
                      <div className="px-4 py-3 sm:px-5">
@@ -272,7 +272,7 @@ export default function FeesComparison() {
                </div>
             </div>
 
-            <p className="mt-3 px-0.5 text-center dark text-[11px] text-muted-foreground">
+            <p className="mt-3 px-0.5 text-center dark text-xs text-muted-foreground">
                Indicative rate. The live rate is shown in the app before you
                confirm.
             </p>
@@ -316,10 +316,10 @@ export default function FeesComparison() {
                            >
                               {row.label}
                            </th>
-                           <td className="border-t font-medium text-orange-600 border-border/80 px-3 py-3.5 sm:px-6">
+                           <td className="border-t font-medium text-orange-700 border-border/80 px-3 py-3.5 sm:px-6">
                               {row.bank}
                            </td>
-                           <td className="border-t border-border/80 text-emerald-500 border-l px-3 py-3.5 font-medium sm:px-6">
+                           <td className="border-t border-border/80 text-emerald-700 border-l px-3 py-3.5 font-medium sm:px-6">
                               {row.loomra}
                            </td>
                         </tr>
@@ -342,7 +342,7 @@ export default function FeesComparison() {
                            "Enter an amount to see what you keep."
                         )}
                      </p>
-                     <p className="mt-0.5 text-[11px] text-muted-foreground">
+                     <p className="mt-0.5 text-xs text-muted-foreground">
                         Illustrative. Bank fees and markups vary by provider.
                      </p>
                   </div>

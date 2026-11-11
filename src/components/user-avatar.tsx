@@ -28,9 +28,9 @@ export default function UserAvatar({
 
    return (
       <Avatar className={cn("size-6 overflow-hidden rounded-full", className)}>
-         <AvatarImage alt={`client-${name} avatar`} src={image} />
+         <AvatarImage alt="" src={image} />
          <AvatarFallback>
-            <img alt={`client-${name} avatar`} src={avatar} />
+            <img alt="" src={avatar} />
          </AvatarFallback>
       </Avatar>
    );

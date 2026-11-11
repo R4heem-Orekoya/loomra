@@ -610,7 +610,7 @@ export function TabsTrigger({
           if (!event.defaultPrevented) setValue(value);
         }}
         className={cn(
-          "relative z-10 inline-flex items-center justify-center whitespace-nowrap bg-transparent px-3.5 py-1.5 text-sm font-medium outline-none",
+          "relative z-10 inline-flex items-center justify-center whitespace-nowrap bg-transparent px-3.5 py-1.5 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
           "text-muted-foreground hover:text-foreground",
           radius,
           className,
@@ -663,7 +663,7 @@ export function TabsContent({ value, children, className }: { value: string; chi
       initial={{ opacity: 0, y: reduce ? 0 : 4 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.18, ease: EASE_OUT }}
-      className={cn("mt-4 outline-none focus-visible:ring-2 focus-visible:ring-ring/40 rounded-md", className)}
+      className={cn("mt-4 outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md", className)}
     >
       {children}
     </motion.div>

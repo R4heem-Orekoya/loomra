@@ -216,7 +216,7 @@ export default function Capabilities() {
                   </p>
 
                   <Button className="max-w-fit " size="lg" variant="outline">
-                     Learn more
+                     Explore multi-currency accounts
                   </Button>
                </div>
             </header>
@@ -250,7 +250,7 @@ export default function Capabilities() {
 
             <div
                key={activeTab.value}
-               className="animate-in fade-in-0 slide-in-from-bottom-1 mx-auto mt-12 flex max-w-5xl flex-col items-start gap-4 duration-300 sm:flex-row sm:justify-between sm:gap-12"
+               className="animate-in fade-in-0 slide-in-from-bottom-1 motion-reduce:animate-none mx-auto mt-12 flex max-w-5xl flex-col items-start gap-4 duration-300 sm:flex-row sm:justify-between sm:gap-12"
             >
                <span className="font-heading text-2xl font-medium tracking-tighter sm:text-3xl lg:text-4xl">
                   {activeTab.heading}
@@ -420,7 +420,7 @@ function HoldScreen() {
                </p>
             </div>
 
-            <span className="mt-0.5 shrink-0 rounded-full bg-blue-600/10 px-2 py-0.5 text-[10px] font-semibold text-blue-600 dark:text-blue-400">
+            <span className="mt-0.5 shrink-0 rounded-full bg-blue-600/10 px-2 py-0.5 text-[10px] font-semibold text-blue-700 dark:text-blue-400">
                4 currencies
             </span>
          </div>
@@ -477,7 +477,7 @@ function HoldScreen() {
                   />
                </span>
                <span className="text-[10px] font-medium text-muted-foreground">
-                  USD {"->"} NGN
+                  USD {"→"} NGN
                </span>
             </div>
             <span className="text-[10px] font-medium tabular-nums">
@@ -495,7 +495,7 @@ function SendScreen() {
       <ScreenShell>
          <div className="flex items-center justify-between">
             <p className="text-sm font-medium tracking-tight">Send money</p>
-            <span className="text-[11px] font-medium tracking-tighter text-blue-600/80">
+            <span className="text-[11px] font-medium tracking-tighter text-blue-700 dark:text-blue-400">
                History
             </span>
          </div>
@@ -537,7 +537,7 @@ function SendScreen() {
             <div className="mt-2 flex items-center justify-between text-[10px]">
                <span className="text-muted-foreground">
                   Fee{" "}
-                  <span className="font-medium text-green-600 dark:text-green-400">
+                  <span className="font-medium text-green-700 dark:text-green-400">
                      {SEND_FEE}
                   </span>
                </span>
@@ -572,7 +572,7 @@ function SendScreen() {
          <div className="mt-4 flex min-h-0 flex-1 flex-col sm:mt-8">
             <div className="flex items-center justify-between">
                <span className="text-xs font-medium">Recent recipients</span>
-               <span className="text-[11px] font-medium tracking-tighter text-blue-600/80">
+               <span className="text-[11px] font-medium tracking-tighter text-blue-700 dark:text-blue-400">
                   See all
                </span>
             </div>
@@ -689,7 +689,7 @@ function ActivityList({ items, title }: { items: Activity[]; title: string }) {
       <div className="mt-4 flex min-h-0 flex-1 flex-col sm:mt-8">
          <div className="flex items-center justify-between">
             <span className="text-xs font-medium">{title}</span>
-            <span className="text-[11px] font-medium tracking-tighter text-blue-600/80 dark:text-blue-400/80">
+            <span className="text-[11px] font-medium tracking-tighter text-blue-700 dark:text-blue-400">
                See all
             </span>
          </div>
@@ -725,8 +725,8 @@ function ActivityList({ items, title }: { items: Activity[]; title: string }) {
                         className={cn(
                            "text-[11px] font-medium tabular-nums tracking-tighter",
                            item.amount.startsWith("+")
-                              ? "text-green-600 dark:text-green-400"
-                              : "text-rose-600 dark:text-rose-400",
+                              ? "text-green-700 dark:text-green-400"
+                              : "text-rose-700 dark:text-rose-400",
                         )}
                      >
                         {item.amount}
@@ -735,7 +735,7 @@ function ActivityList({ items, title }: { items: Activity[]; title: string }) {
                         className={cn(
                            "text-[10px]",
                            item.status === "Pending"
-                              ? "text-amber-600 dark:text-amber-400"
+                              ? "text-amber-700 dark:text-amber-400"
                               : "text-muted-foreground",
                         )}
                      >

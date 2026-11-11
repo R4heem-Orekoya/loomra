@@ -50,7 +50,7 @@ function BalanceCard({ className }: PanelProps) {
                   $15,090.32
                </p>
             </div>
-            <span className="mt-0.5 shrink-0 rounded-full bg-blue-600/10 px-2 py-0.5 text-[10px] font-semibold text-blue-600">
+            <span className="mt-0.5 shrink-0 rounded-full bg-blue-600/10 px-2 py-0.5 text-[10px] font-semibold text-blue-700">
                4 currencies
             </span>
          </div>
@@ -126,7 +126,7 @@ function VirtualCard({ className }: PanelProps) {
                   <p className="text-[min(12px,3.6cqw)] font-semibold tracking-[0.08em] text-white/90 uppercase">
                      Raheem Orekoya
                   </p>
-                  <p className="mt-0.5 text-[min(10px,2.9cqw)] tracking-[0.12em] text-white/45">
+                  <p className="mt-0.5 text-[min(10px,2.9cqw)] tracking-[0.12em] text-white/70">
                      09/29
                   </p>
                </div>
@@ -151,7 +151,7 @@ function ActivityCard({ className }: PanelProps) {
       >
          <div className="flex items-center justify-between">
             <span className="text-xs font-medium ">Transactions</span>
-            <span className="text-[11px] text-blue-600/80 font-medium tracking-tighter">
+            <span className="text-[11px] text-blue-700 font-medium tracking-tighter">
                See all
             </span>
          </div>
@@ -167,7 +167,7 @@ function ActivityCard({ className }: PanelProps) {
                      Jakub · Berlin
                   </p>
                </div>
-               <span className="hidden shrink-0 text-xs tracking-tighter font-medium text-green-600 tabular-nums sm:inline">
+               <span className="hidden shrink-0 text-xs tracking-tighter font-medium text-green-700 tabular-nums sm:inline">
                   +$2,450
                </span>
             </div>
@@ -182,7 +182,7 @@ function ActivityCard({ className }: PanelProps) {
                      Quadri · Nigeria
                   </p>
                </div>
-               <span className="hidden shrink-0 text-xs tracking-tighter font-medium text-rose-600 tabular-nums sm:inline">
+               <span className="hidden shrink-0 text-xs tracking-tighter font-medium text-rose-700 tabular-nums sm:inline">
                   -$2,450
                </span>
             </div>
@@ -208,7 +208,7 @@ function ActivityCard({ className }: PanelProps) {
                      Card payment
                   </p>
                </div>
-               <span className="shrink-0 text-xs font-medium text-rose-600 tracking-tighter tabular-nums">
+               <span className="shrink-0 text-xs font-medium text-rose-700 tracking-tighter tabular-nums">
                   −€10.99
                </span>
             </div>

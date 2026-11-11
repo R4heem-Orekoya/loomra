@@ -93,7 +93,7 @@
 @property --ring {
    syntax: "<color>";
    inherits: true;
-   initial-value: oklch(0.708 0 0);
+   initial-value: oklch(0.55 0 0);
 }
 @property --surface {
    syntax: "<color>";
@@ -248,7 +248,7 @@ html.lenis body {
    --destructive: oklch(0.577 0.245 27.325);
    --border: oklch(0.922 0 0);
    --input: oklch(0.922 0 0);
-   --ring: oklch(0.708 0 0);
+   --ring: oklch(0.55 0 0);
    --surface: oklch(1 0 0);
    --surface-inset: oklch(0.97 0 0);
    --surface-chip: oklch(1 0 0);
@@ -332,16 +332,6 @@ html.lenis body {
       transform: translateY(-8px);
    }
 }
-@keyframes blob-pulse {
-   0%,
-   100% {
-      transform: translateX(-50%) scale(1);
-   }
-   50% {
-      transform: translateX(-50%) scale(1.08);
-   }
-}
-
 .notif-in {
    animation: notif-in 0.9s cubic-bezier(0.32, 0.72, 0, 1) backwards;
 }
@@ -433,7 +423,7 @@ html.dark {
 
 @layer base {
    * {
-      @apply border-border outline-ring/50;
+      @apply border-border outline-ring;
    }
    body {
       @apply bg-background text-foreground;

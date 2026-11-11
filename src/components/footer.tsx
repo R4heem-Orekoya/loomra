@@ -107,7 +107,7 @@ export default function Footer() {
 
                {COLUMNS.map((column) => (
                   <nav key={column.title} aria-label={column.title}>
-                     <h3 className="text-[10px] font-medium uppercase tracking-wider text-paper-muted">
+                     <h3 className="text-xs font-medium uppercase tracking-wider text-paper-muted">
                         {column.title}
                      </h3>
                      <ul className="mt-5 space-y-3">
@@ -126,7 +126,7 @@ export default function Footer() {
                ))}
             </div>
 
-            <div className="flex flex-col gap-6 pb-12 text-[11px] leading-relaxed text-paper-muted lg:flex-row lg:items-end lg:justify-between lg:gap-16">
+            <div className="flex flex-col gap-6 pb-12 text-xs leading-relaxed text-paper-muted lg:flex-row lg:items-end lg:justify-between lg:gap-16">
                <p className="max-w-2xl text-pretty">
                   Loomra is a financial technology company, not a bank. Account,
                   card and transfer services are provided by licensed partners.

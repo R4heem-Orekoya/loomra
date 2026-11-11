@@ -49,7 +49,7 @@ export default function ClosingCta() {
       <section
          id="open-account"
          aria-labelledby="cta-heading"
-         className="relative isolate scroll-mt-24 text-paper-ink"
+         className="relative isolate scroll-mt-24 bg-paper text-paper-ink"
       >
          <div className="mx-auto w-full max-w-6xl px-6 pt-24 pb-10 lg:pt-48">
             <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
@@ -91,7 +91,7 @@ export default function ClosingCta() {
                   </Link>
                </div>
 
-               <p className="mt-5 text-[11px] text-paper-muted">
+               <p className="mt-5 text-xs text-paper-muted">
                   {DETAILS.join(" · ")}
                </p>
             </div>
@@ -100,11 +100,11 @@ export default function ClosingCta() {
          <div className="relative w-full max-w-2xl mx-auto overflow-hidden py-6">
             <div
                aria-hidden="true"
-               className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-linear-to-r from-white to-transparent sm:w-40"
+               className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-linear-to-r from-paper to-transparent sm:w-40"
             />
             <div
                aria-hidden="true"
-               className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-linear-to-l from-white to-transparent sm:w-40"
+               className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-linear-to-l from-paper to-transparent sm:w-40"
             />
 
             <div className="marquee-track flex w-max items-center">
@@ -127,7 +127,7 @@ function CurrencyGroup({ hidden = false }: { hidden?: boolean }) {
          {CURRENCIES.map((currency) => (
             <li
                key={currency.code}
-               className="inline-flex items-center gap-2 rounded-full border border-border/30 bg-secondary py-0.5 pr-2 pl-0.5 text-[11px] font-semibold uppercase tracking-wide text-paper-ink/75"
+               className="inline-flex items-center gap-2 rounded-full border border-border/30 bg-secondary py-0.5 pr-2 pl-0.5 text-xs font-semibold uppercase tracking-wide text-paper-ink/75"
             >
                <Image
                   src={`/flags/${currency.flag}.svg`}

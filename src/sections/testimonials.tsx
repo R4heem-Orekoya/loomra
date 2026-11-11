@@ -1,5 +1,7 @@
 "use client";
 
+import { PauseIcon, PlayIcon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Autoplay, Keyboard } from "swiper/modules";
@@ -66,6 +68,7 @@ const getReducedMotion = () =>
 
 export default function Testimonials() {
    const [activeIndex, setActiveIndex] = useState(0);
+   const [paused, setPaused] = useState(false);
    // Swiper instantiates itself while rendering, so keep it off the server and
    // let the first testimonial stand in until the client takes over.
    const [mounted, setMounted] = useState(false);
@@ -90,11 +93,21 @@ export default function Testimonials() {
          if (activeFillRef.current) {
             activeFillRef.current.style.transform = "scaleX(0)";
          }
-         if (!reduceMotion) swiper.autoplay.start();
+         if (!reduceMotion && !paused) swiper.autoplay.start();
          return;
       }
 
       swiper.slideToLoop(index);
+   };
+
+   const toggleAutoplay = () => {
+      const swiper = swiperRef.current;
+      if (paused) {
+         swiper?.autoplay.start();
+      } else {
+         swiper?.autoplay.stop();
+      }
+      setPaused((value) => !value);
    };
 
    return (
@@ -179,7 +192,7 @@ export default function Testimonials() {
                               aria-current={isActive ? "true" : undefined}
                               onClick={() => selectTestimonial(index)}
                               className={cn(
-                                 "group flex h-8 cursor-pointer items-center rounded-full outline-none transition-[flex-grow] duration-500 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring motion-reduce:transition-none",
+                                 "group flex h-8 cursor-pointer items-center rounded-full transition-[flex-grow] duration-500 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring motion-reduce:transition-none",
                                  isActive ? "flex-4" : "flex-1",
                               )}
                            >
@@ -202,9 +215,28 @@ export default function Testimonials() {
                      })}
                   </div>
 
-                  <span className="shrink-0 text-[11px] tabular-nums tracking-tight text-muted-foreground">
+                  <span className="shrink-0 text-xs tabular-nums tracking-tight text-muted-foreground">
                      {pad(activeIndex + 1)} / {pad(TESTIMONIALS.length)}
                   </span>
+
+                  {reduceMotion ? null : (
+                     <button
+                        type="button"
+                        onClick={toggleAutoplay}
+                        aria-label={
+                           paused
+                              ? "Play testimonial autoplay"
+                              : "Pause testimonial autoplay"
+                        }
+                        className="grid size-7 shrink-0 cursor-pointer place-items-center rounded-full border border-border/70 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                     >
+                        <HugeiconsIcon
+                           icon={paused ? PlayIcon : PauseIcon}
+                           strokeWidth={1.8}
+                           className="size-3.5"
+                        />
+                     </button>
+                  )}
                </div>
             </div>
          </div>
