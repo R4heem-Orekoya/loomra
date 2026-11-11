@@ -197,7 +197,7 @@ function UsedByHeader() {
                </span>
                <h2
                   id="used-by-heading"
-                  className="mt-2 max-w-xl text-balance font-heading text-2xl font-medium tracking-tighter sm:text-3xl lg:text-4xl"
+                  className="mt-2 max-w-xl text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl lg:text-5xl"
                >
                   People who move money across borders.
                </h2>

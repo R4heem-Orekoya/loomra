@@ -13,6 +13,10 @@ import { Button } from "./ui/button";
 
 const SCROLL_THRESHOLD = 16;
 
+/** Hovering one nav item fades the rest back to muted. */
+const NAV_LINK =
+   "text-foreground transition-colors group-hover/nav:not-hover:text-muted-foreground";
+
 const navbarVariants = {
    bar: {
       maxWidth: 1152,
@@ -73,27 +77,36 @@ export default function Navbar() {
                   L<span className="">oo</span>mra
                </div>
 
-               <ul className="hidden items-center gap-6 text-sm text-muted-foreground font-medium tracking-tight md:flex">
+               <ul className="group/nav hidden items-center gap-6 text-sm font-medium mt-0.5 tracking-tighter md:flex">
                   <li>
-                     <Link href="#capabilities">The account</Link>
+                     <Link href="#capabilities" className={NAV_LINK}>
+                        The account
+                     </Link>
                   </li>
                   <li>
-                     <Link href="#fees">Pricing</Link>
+                     <Link href="#fees" className={NAV_LINK}>
+                        Pricing
+                     </Link>
                   </li>
                   <li>
-                     <Link href="#security">Security</Link>
+                     <Link href="#security" className={NAV_LINK}>
+                        Security
+                     </Link>
                   </li>
                </ul>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 absolute right-1">
                <Link
                   href="#"
-                  className="hidden text-xs font-medium sm:inline-flex"
+                  className="hidden text-sm font-medium sm:inline-flex"
                >
                   Login
                </Link>
-               <Button size="lg" className={scrolled ? "dark bg-foreground" : ""}>
+               <Button
+                  size="lg"
+                  className={scrolled ? "dark bg-foreground" : ""}
+               >
                   Open an account
                </Button>
             </div>

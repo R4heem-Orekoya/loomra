@@ -180,11 +180,11 @@ export default function Capabilities() {
          className="relative scroll-mt-24 overflow-x-clip py-24 lg:py-36"
       >
          <div className="mx-auto w-full px-6">
-            <header className="flex max-w-5xl mx-auto items-end justify-between gap-12">
-               <div className="grid gap-12">
+            <header className="mx-auto flex max-w-5xl flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+               <div className="grid grid-cols-1 gap-8 lg:gap-12">
                   <h2
                      id="capabilities-heading"
-                     className="mt-3 text-balance font-heading text-2xl font-medium tracking-tighter sm:text-3xl lg:text-4xl"
+                     className="mt-3 min-w-0 text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl lg:text-5xl"
                   >
                      Hold, convert and send in one place.
                   </h2>
@@ -252,12 +252,12 @@ export default function Capabilities() {
                key={activeTab.value}
                className="animate-in fade-in-0 slide-in-from-bottom-1 mx-auto mt-12 flex max-w-5xl flex-col items-start gap-4 duration-300 sm:flex-row sm:justify-between sm:gap-12"
             >
-               <span className="font-heading text-2xl font-medium tracking-tighter">
+               <span className="font-heading text-2xl font-medium tracking-tighter sm:text-3xl lg:text-4xl">
                   {activeTab.heading}
                </span>
 
                <div className="flex flex-1 sm:justify-center">
-                  <p className="max-w-sm leading-snug text-pretty text-muted-foreground">
+                  <p className="max-w-sm leading-snug text-sm text-pretty text-muted-foreground">
                      {activeTab.description}
                   </p>
                </div>

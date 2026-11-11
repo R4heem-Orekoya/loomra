@@ -102,7 +102,7 @@ export default function Faq() {
             <header className="lg:sticky lg:top-28 lg:self-start">
                <h2
                   id="faq-heading"
-                  className="max-w-md text-balance font-heading text-2xl font-medium tracking-tighter sm:text-3xl lg:text-4xl"
+                  className="max-w-md text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl lg:text-5xl"
                >
                   The things people ask before signing up.
                </h2>

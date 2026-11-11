@@ -24,8 +24,8 @@ export default function HeroVisual() {
       >
          <div className="absolute inset-x-8 top-10 bottom-0 -z-10 rounded-[50%] bg-[#0D5C3A]/5 blur-3xl" />
 
-         <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-5">
-            <BalanceCard className="col-span-2 lg:col-span-1 lg:-rotate-2 lg:translate-y-3" />
+         <div className="mx-auto grid max-w-md grid-cols-1 gap-3 sm:max-w-none sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+            <BalanceCard className="col-span-1 sm:col-span-2 lg:col-span-1 lg:-rotate-2 lg:translate-y-3" />
             <VirtualCard className="col-span-1 lg:-translate-y-1" />
             <ActivityCard className="col-span-1 lg:rotate-1 lg:translate-y-4" />
          </div>
@@ -86,9 +86,12 @@ function BalanceCard({ className }: PanelProps) {
 
 function VirtualCard({ className }: PanelProps) {
    return (
+      // `@container` makes the card its own query container for the type scale.
+      // Its own padding can't use `cqw` (an element can't query itself), so it
+      // uses `%` — the grid area equals the card width, so it scales together.
       <div
          className={cn(
-            "@container relative flex aspect-[1.586] w-full flex-col justify-between overflow-hidden rounded-xl bg-foreground p-[clamp(12px,5cqw,20px)] text-white shadow-2xl",
+            "@container relative flex aspect-[1.586] w-full flex-col justify-between overflow-hidden rounded-xl bg-foreground p-[min(20px,6.5%)] text-white shadow-2xl",
             className,
          )}
       >
@@ -96,39 +99,39 @@ function VirtualCard({ className }: PanelProps) {
          <div className="pointer-events-none absolute -bottom-20 -left-10 size-40 rounded-full bg-rose-500/40 blur-2xl" />
 
          <div className="relative flex items-center justify-between">
-            <span className="flex items-center gap-[clamp(4px,1.5cqw,8px)]">
-               <span className="font-heading text-[clamp(12px,6cqw,18px)] font-semibold tracking-tighter">
+            <span className="flex items-center gap-[min(8px,1.5cqw)]">
+               <span className="font-heading text-[min(18px,6cqw)] font-semibold tracking-tighter">
                   Loomra
                </span>
             </span>
-            <span className="text-[clamp(7px,2.5cqw,10px)] font-medium tracking-wide text-white/70">
+            <span className="text-[min(10px,2.5cqw)] font-medium tracking-wide text-white/70">
                VIRTUAL
             </span>
          </div>
 
-         <div className="relative flex items-center gap-[clamp(6px,2.4cqw,10px)]">
+         <div className="relative flex items-center gap-[min(10px,2.4cqw)]">
             <HugeiconsIcon
                icon={NfcIcon}
-               className="size-[clamp(20px,8cqw,28px)] text-white/80"
+               className="size-[min(28px,8cqw)] text-white/80"
             />
          </div>
 
          <div className="relative">
-            <p className="font-numeric text-[clamp(10px,3.8cqw,18px)] tracking-[0.14em] whitespace-nowrap text-white/80">
+            <p className="font-numeric text-[min(18px,3.8cqw)] tracking-[0.12em] whitespace-nowrap text-white/80">
                •••• •••• •••• 4821
             </p>
 
-            <div className="mt-[clamp(6px,2.6cqw,12px)] flex items-end justify-between">
+            <div className="mt-[min(12px,2.6cqw)] flex items-end justify-between">
                <div>
-                  <p className="text-[clamp(10px,2.6cqw,12px)] font-semibold tracking-[0.08em] text-white/90 uppercase">
+                  <p className="text-[min(12px,3.6cqw)] font-semibold tracking-[0.08em] text-white/90 uppercase">
                      Raheem Orekoya
                   </p>
-                  <p className="mt-0.5 text-[clamp(8px,2.5cqw,10px)] tracking-[0.12em] text-white/45">
+                  <p className="mt-0.5 text-[min(10px,2.9cqw)] tracking-[0.12em] text-white/45">
                      09/29
                   </p>
                </div>
                <CreditCardServiceProvider
-                  className="brightness-0 invert scale-200"
+                  className="h-auto w-[min(72px,24cqw)] brightness-0 invert"
                   format="logo"
                   type="Visa"
                />
@@ -153,7 +156,7 @@ function ActivityCard({ className }: PanelProps) {
             </span>
          </div>
 
-         <div className="grid gap-2 mt-4">
+         <div className="grid grid-cols-1 gap-2 mt-4">
             <div className="flex items-center gap-2 border border-border/60 px-2 py-1.5 bg-secondary/50 rounded-md">
                <UserAvatar name="Jakub" className="size-7" />
                <div className="min-w-0 flex-1">

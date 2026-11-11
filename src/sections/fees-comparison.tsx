@@ -77,7 +77,7 @@ export default function FeesComparison() {
                   numbers before you sign up.
                </p>
 
-               <div className="flex items-center gap-0 mx-auto justify-center mt-12 dark">
+               <div className="mx-auto mt-12 flex flex-col items-center justify-center gap-3 dark sm:flex-row sm:gap-0">
                   <Link
                      href="#open-account"
                      className={cn(
@@ -101,7 +101,7 @@ export default function FeesComparison() {
 
             <div className="mx-auto mt-12 max-w-3xl">
                <div className="overflow-hidden rounded-xl border bg-background">
-                  <div className="grid sm:grid-cols-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2">
                      <div className="px-5 py-5 focus-within:bg-neutral-50/60 sm:px-6">
                         <div className="flex items-center justify-between">
                            <label
@@ -288,19 +288,19 @@ export default function FeesComparison() {
                      <tr>
                         <th
                            scope="col"
-                           className="w-[38%] px-4 py-3.5 text-base font-medium tracking-tighter sm:px-6"
+                           className="w-[38%] px-3 py-3.5 text-base font-medium tracking-tighter sm:px-6"
                         >
                            Cost
                         </th>
                         <th
                            scope="col"
-                           className="px-4 py-3.5 text-base font-medium tracking-tighter sm:px-6"
+                           className="px-3 py-3.5 text-base font-medium tracking-tighter sm:px-6"
                         >
                            Typical bank
                         </th>
                         <th
                            scope="col"
-                           className="border-l px-4 py-3.5 text-base font-medium tracking-tighter sm:px-6"
+                           className="border-l px-3 py-3.5 text-base font-medium tracking-tighter sm:px-6"
                         >
                            Loomra
                         </th>
@@ -312,14 +312,14 @@ export default function FeesComparison() {
                         <tr key={row.label}>
                            <th
                               scope="row"
-                              className="border-t border-border/80 px-4 py-3.5 font-normal tracking-tight sm:px-6"
+                              className="border-t border-border/80 px-3 py-3.5 font-normal tracking-tight sm:px-6"
                            >
                               {row.label}
                            </th>
-                           <td className="border-t font-medium text-orange-600 border-border/80 px-4 py-3.5 sm:px-6">
+                           <td className="border-t font-medium text-orange-600 border-border/80 px-3 py-3.5 sm:px-6">
                               {row.bank}
                            </td>
-                           <td className="border-t border-border/80 text-emerald-500 border-l px-4 py-3.5 font-medium sm:px-6">
+                           <td className="border-t border-border/80 text-emerald-500 border-l px-3 py-3.5 font-medium sm:px-6">
                               {row.loomra}
                            </td>
                         </tr>
@@ -346,7 +346,7 @@ export default function FeesComparison() {
                         Illustrative. Bank fees and markups vary by provider.
                      </p>
                   </div>
-                  <Button className="shrink-0">Open an account</Button>
+                  <Button className="w-fit shrink-0">Open an account</Button>
                </div>
             </div>
          </div>

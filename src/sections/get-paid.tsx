@@ -59,7 +59,7 @@ export default function GetPaid() {
                </span>
                <h2
                   id="get-paid-heading"
-                  className="mt-3 text-balance font-heading text-2xl font-medium tracking-tighter sm:text-3xl lg:text-4xl"
+                  className="mt-3 text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl lg:text-5xl"
                >
                   Get paid globally in{" "}
                   <span className="text-accent-strong">3 easy steps</span>.

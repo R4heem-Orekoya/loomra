@@ -180,7 +180,7 @@ export default function SecurityTrust() {
 
                <h2
                   id="security-heading"
-                  className="mt-3 text-balance font-heading text-2xl font-medium tracking-tighter sm:text-3xl lg:text-4xl"
+                  className="mt-3 text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl lg:text-5xl"
                >
                   Built like a bank. Moves like the internet.
                </h2>
