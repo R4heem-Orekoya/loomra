@@ -98,7 +98,7 @@ export default function Faq() {
          aria-labelledby="faq-heading"
          className="scroll-mt-24 border-t border-border/60 py-24 lg:py-32"
       >
-         <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 lg:grid-cols-[minmax(0,21rem)_minmax(0,1fr)] lg:gap-20">
+         <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 lg:grid-cols-[minmax(0,25rem)_minmax(0,1fr)] lg:gap-16">
             <header className="lg:sticky lg:top-28 lg:self-start">
                <h2
                   id="faq-heading"
@@ -106,16 +106,16 @@ export default function Faq() {
                >
                   The things people ask before signing up.
                </h2>
-               <p className="mt-5 max-w-sm text-pretty text-sm leading-relaxed text-muted-foreground">
+               <p className="mt-6 text-pretty text-sm leading-relaxed text-muted-foreground">
                   Straight answers on fees, timing, limits and safety — with the
                   numbers shown before you send, not buried in a tariff sheet.
                </p>
 
-               <dl className="mt-10 max-w-sm border-t border-border/70 text-sm">
+               <dl className="mt-12 border-t border-border text-sm">
                   {FACTS.map((fact) => (
                      <div
                         key={fact.label}
-                        className="flex items-baseline justify-between gap-6 border-b border-border/70 py-3"
+                        className="flex items-baseline justify-between gap-6 border-b border-border/70 py-3.5"
                      >
                         <dt className="text-xs text-muted-foreground">
                            {fact.label}
@@ -127,15 +127,15 @@ export default function Faq() {
                   ))}
                </dl>
 
-               <p className="mt-8 max-w-sm text-xs leading-relaxed text-muted-foreground">
+               <p className="mt-10 text-sm leading-relaxed text-muted-foreground">
                   Still deciding?{" "}
                   <a
                      href="mailto:hello@loomra.com"
-                     className="font-medium text-foreground underline-offset-4 hover:underline"
+                     className="font-medium text- underline-offset-4 hover:underline"
                   >
-                     Talk to a human
+                     Talk to a human.
                   </a>{" "}
-                  — no sales script.
+                  No sales script.
                </p>
             </header>
 
@@ -164,7 +164,7 @@ function FaqGroup({
 }) {
    return (
       <div>
-         <h3 className="text-[11px] font-medium tracking-[0.16em] text-muted-foreground uppercase">
+         <h3 className="text-sm font-medium text-muted-foreground">
             {group.label}
          </h3>
 
