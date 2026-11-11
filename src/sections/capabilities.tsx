@@ -23,34 +23,10 @@ import UserAvatar from "@/components/user-avatar";
 import { formatUsd, transferFee } from "@/lib/fees";
 import { cn } from "@/lib/utils";
 
-type Capability = {
-   title: string;
-   copy: string;
-   icon: typeof Wallet01Icon;
-};
-
 type NavItem = {
    label: string;
    icon: typeof Wallet01Icon;
 };
-
-const CAPABILITIES: Capability[] = [
-   {
-      title: "Hold",
-      copy: "Keep dollars, euros, pounds and more side by side — no conversion until you need it.",
-      icon: Wallet01Icon,
-   },
-   {
-      title: "Send",
-      copy: "Pay a client, a contractor or family in their local currency. Most transfers land in seconds.",
-      icon: MoneySend01Icon,
-   },
-   {
-      title: "Spend",
-      copy: "Use your card in 170+ countries, paid straight from any balance you hold.",
-      icon: CreditCardIcon,
-   },
-];
 
 const SCREENS = [HoldScreen, SendScreen, SpendScreen];
 

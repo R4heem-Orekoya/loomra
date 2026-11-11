@@ -7,8 +7,6 @@ import { cn } from "@/lib/utils";
 export default function Hero() {
    return (
       <div className="relative isolate flex flex-col overflow-x-clip px-6 pt-32 pb-32">
-         {/* <HeroBackdrop /> */}
-
          <div className="relative flex flex-col justify-center space-y-4 text-center">
             <div className="grid">
                <span className="text-xs font-medium text-muted-foreground mb-4">
@@ -86,18 +84,3 @@ export default function Hero() {
    );
 }
 
-function HeroBackdrop() {
-   return (
-      <div
-         aria-hidden="true"
-         className="pointer-events-none absolute inset-0 -z-10"
-         style={{
-            backgroundImage: [
-               // "radial-gradient(60% 55% at 50% -10%, rgba(13, 92, 58, 0.16), transparent 70%)",
-               "radial-gradient(38% 34% at 4% 24%, rgba(252, 78, 30, 0.2), transparent 72%)",
-               "radial-gradient(40% 36% at 96% 18%, rgba(56, 189, 248, 0.2), transparent 72%)",
-            ].join(", "),
-         }}
-      />
-   );
-}
