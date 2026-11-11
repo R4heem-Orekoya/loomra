@@ -49,7 +49,7 @@ export default function ClosingCta() {
       <section
          id="open-account"
          aria-labelledby="cta-heading"
-         className="relative isolate scroll-mt-24 bg-paper text-paper-ink"
+         className="relative isolate scroll-mt-24 text-paper-ink"
       >
          <div className="mx-auto w-full max-w-6xl px-6 pt-24 pb-10 lg:pt-48">
             <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
@@ -100,11 +100,11 @@ export default function ClosingCta() {
          <div className="relative w-full max-w-2xl mx-auto overflow-hidden py-6">
             <div
                aria-hidden="true"
-               className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-linear-to-r from-paper to-transparent sm:w-40"
+               className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-linear-to-r from-white to-transparent sm:w-40"
             />
             <div
                aria-hidden="true"
-               className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-linear-to-l from-paper to-transparent sm:w-40"
+               className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-linear-to-l from-white to-transparent sm:w-40"
             />
 
             <div className="marquee-track flex w-max items-center">
