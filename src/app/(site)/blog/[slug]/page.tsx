@@ -115,7 +115,7 @@ async function Post({ params }: PostPageProps) {
                      <li key={item.slug}>
                         <Link
                            href={`/blog/${item.slug}`}
-                           className="group flex h-full flex-col rounded-lg border border-border/70 p-4 transition-colors hover:bg-secondary/40"
+                           className="group flex h-full flex-col rounded-lg border border-border/40 bg-muted/50 p-4 transition-colors hover:bg-muted/70"
                         >
                            <span className="flex items-start justify-between gap-3">
                               <span className="text-sm font-medium tracking-tight">

@@ -28,7 +28,7 @@ export default function LegalIndexPage() {
                      <li key={doc.slug}>
                         <Link
                            href={`/legal/${doc.slug}`}
-                           className="group flex h-full flex-col rounded-lg border border-border/70 bg-secondary/40 p-5 transition-colors hover:border-border hover:bg-secondary/70"
+                           className="group flex h-full flex-col rounded-lg border border-border/40 bg-muted/50 p-5 transition-colors hover:border-border hover:bg-muted/70"
                         >
                            <span className="flex items-start justify-between gap-3">
                               <span className="font-heading text-lg font-medium tracking-tighter">

@@ -120,8 +120,8 @@ export default function HelpSearch() {
                      <Link
                         href={topic.href}
                         className={cn(
-                           "group flex h-full flex-col rounded-lg border border-border/70 bg-secondary/40 p-5 transition-colors",
-                           "hover:border-border hover:bg-secondary/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+                           "group flex h-full flex-col rounded-lg border border-border/40 bg-muted/50 p-5 transition-colors",
+                           "hover:border-border hover:bg-muted/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
                         )}
                      >
                         <span className="flex items-start justify-between gap-3">

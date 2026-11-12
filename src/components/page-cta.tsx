@@ -25,13 +25,8 @@ export default function PageCta({
    return (
       <section className="px-6 pt-8 pb-24 lg:pt-12">
          <div className="mx-auto w-full max-w-6xl">
-            <div className="relative isolate overflow-hidden rounded-xl border border-border/70 bg-secondary/60 px-6 py-14 text-center sm:px-12">
-               <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-24 -top-24 -z-10 h-48 rounded-[50%] bg-[#0D5C3A]/10 blur-3xl"
-               />
-
-               <h2 className="mx-auto max-w-xl text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl">
+            <div className="relative isolate overflow-hidden px-6 py-14 md:py-20 lg:py-24 text-center sm:px-12">
+               <h2 className="mx-auto max-w-xl text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
                   {title}
                </h2>
 
@@ -44,14 +39,14 @@ export default function PageCta({
                      href={primaryHref}
                      className={cn(
                         buttonVariants({ size: "lg" }),
-                        "group h-10 px-6 text-sm",
+                        "group h-10 pl-4 text-sm",
                      )}
                   >
                      {primaryLabel}
                      <HugeiconsIcon
                         icon={ArrowUpRight01Icon}
                         strokeWidth={1.8}
-                        className="size-3.5 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none"
+                        className="size-3.5 mr-2.5 transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none"
                         data-icon="inline-end"
                      />
                   </Link>
@@ -59,8 +54,8 @@ export default function PageCta({
                   <Link
                      href={secondaryHref}
                      className={cn(
-                        buttonVariants({ variant: "outline", size: "lg" }),
-                        "h-10 px-6 text-sm",
+                        buttonVariants({ variant: "secondary", size: "lg" }),
+                        "h-10 px-4 text-sm",
                      )}
                   >
                      {secondaryLabel}

@@ -2,7 +2,6 @@ import {
    HeartCheckIcon,
    Idea01Icon,
    Shield01Icon,
-   SparklesIcon,
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import type { Metadata } from "next";
@@ -44,7 +43,7 @@ const VALUES = [
 
 const TEAM = [
    {
-      name: "Raheem Orekoya",
+      name: "Samuel",
       role: "Co-founder & CEO",
       image: "/team/raheem-orekoya-portrait.jpg",
       alt: "Portrait of Raheem Orekoya",
@@ -81,27 +80,10 @@ const TEAM = [
    },
 ];
 
-const TIMELINE = [
-   {
-      year: "2021",
-      title: "A spreadsheet and a problem",
-      copy: "Two founders working across three currencies get tired of losing a slice of every payment to fees they cannot see.",
-   },
-   {
-      year: "2022",
-      title: "The first account",
-      copy: "Loomra opens to a small waitlist with four currencies, local details in two, and a single promise: the real rate, shown in full.",
-   },
-   {
-      year: "2024",
-      title: "Local rails, everywhere",
-      copy: "Direct connections to local payment systems cut most transfer times from days to seconds and remove a layer of correspondent banks.",
-   },
-   {
-      year: "2026",
-      title: "One account, forty currencies",
-      copy: "Virtual cards, multi-currency balances and transfers to 100+ countries live in a single account, with no monthly fee.",
-   },
+const TEAM_STATS = [
+   { value: "12", label: "Team members" },
+   { value: "4", label: "Offices" },
+   { value: "9", label: "Countries" },
 ];
 
 export default function AboutPage() {
@@ -115,16 +97,9 @@ export default function AboutPage() {
 
          <section className="px-6 pb-16">
             <div className="mx-auto w-full max-w-6xl">
-               <dl className="grid grid-cols-2 overflow-hidden rounded-lg border border-border/70 bg-secondary/40 sm:grid-cols-4">
-                  {STATS.map((stat, index) => (
-                     <div
-                        key={stat.label}
-                        className={
-                           index % 2 === 1
-                              ? "border-l border-border/70 px-5 py-6"
-                              : "px-5 py-6"
-                        }
-                     >
+               <dl className="grid grid-cols-2 overflow-hidden rounded-lg divide-x divide-border/50 border border-border/40 bg-muted/50 sm:grid-cols-4">
+                  {STATS.map((stat) => (
+                     <div key={stat.label} className={"px-5 py-6"}>
                         <dd className="font-heading text-3xl font-medium leading-none tracking-tighter tabular-nums sm:text-4xl">
                            {stat.value}
                         </dd>
@@ -137,7 +112,7 @@ export default function AboutPage() {
             </div>
          </section>
 
-         <section className="border-t border-border/60 px-6 py-24">
+         <section className="px-6 py-24">
             <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
                <div>
                   <span className="text-sm font-medium text-muted-foreground">
@@ -148,7 +123,7 @@ export default function AboutPage() {
                   </h2>
                </div>
 
-               <div className="space-y-4 text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
+               <div className="space-y-4 text-pretty text-sm font-medium leading-relaxed mt-4 sm:text-base">
                   <p>
                      Moving money between countries involves a chain of banks,
                      each taking a small cut and each adding a day. By the time
@@ -172,7 +147,7 @@ export default function AboutPage() {
             </div>
          </section>
 
-         <section className="px-6 pb-24">
+         <section className="px-6 py-32">
             <div className="mx-auto w-full max-w-6xl">
                <h2 className="max-w-md text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl">
                   What we optimise for.
@@ -182,16 +157,16 @@ export default function AboutPage() {
                   {VALUES.map((value) => (
                      <li
                         key={value.title}
-                        className="flex h-full flex-col rounded-lg border border-border/70 bg-secondary/40 p-5"
+                        className="flex h-full flex-col rounded-lg border border-border/40 bg-muted/50 p-4"
                      >
-                        <span className="grid size-8 place-items-center rounded border border-border/70 bg-background">
+                        <span className="grid size-7.5 place-items-center rounded border border-border/70 bg-background">
                            <HugeiconsIcon
                               icon={value.icon}
                               strokeWidth={1.7}
                               className="size-4 text-accent-strong"
                            />
                         </span>
-                        <h3 className="mt-4 font-heading text-lg font-medium tracking-tighter">
+                        <h3 className="mt-2.5 font-heading text-lg font-medium tracking-tighter">
                            {value.title}
                         </h3>
                         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -203,37 +178,50 @@ export default function AboutPage() {
             </div>
          </section>
 
-         <section className="border-t border-border/60 px-6 py-24">
+         <section id="team" className="scroll-mt-24 px-6 py-32">
             <div className="mx-auto w-full max-w-6xl">
-               <div className="flex flex-wrap items-end justify-between gap-4">
+               <div className="mx-auto max-w-2xl text-center">
                   <h2 className="text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl">
                      The people building it.
                   </h2>
-                  <p className="max-w-sm text-pretty text-sm leading-relaxed text-muted-foreground">
+                  <p className="mx-auto mt-4 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground">
                      A small team split across Lagos, Milan, Warsaw and Lisbon —
                      which is another way of saying we use the product every
                      day.
                   </p>
+
+                  <dl className="mt-10 flex flex-wrap items-start justify-center gap-x-12 gap-y-8 sm:gap-x-16">
+                     {TEAM_STATS.map((stat) => (
+                        <div key={stat.label} className="text-center">
+                           <dd className="font-sans text-2xl font-medium leading-none tracking-tighter tabular-nums sm:text-3xl">
+                              {stat.value}
+                           </dd>
+                           <dt className="mt-2 text-xs font-medium text-muted-foreground">
+                              {stat.label}
+                           </dt>
+                        </div>
+                     ))}
+                  </dl>
                </div>
 
-               <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+               <ul className="mx-auto mt-20 grid w-full max-w-2xl grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-16">
                   {TEAM.map((person) => (
                      <li key={person.name}>
-                        <figure className="group overflow-hidden rounded-lg border border-border/70 bg-secondary/40">
-                           <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
+                        <figure className="group mx-auto w-full max-w-36">
+                           <div className="relative aspect-square overflow-hidden rounded-full bg-secondary">
                               <Image
                                  src={person.image}
                                  alt={person.alt}
                                  fill
-                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                                 sizes="(max-width: 640px) 80vw, (max-width: 1024px) 45vw, 208px"
+                                 className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                               />
                            </div>
-                           <figcaption className="border-t border-border/70 px-4 py-3.5">
+                           <figcaption className="mt-4 text-center">
                               <p className="text-sm font-medium tracking-tight">
                                  {person.name}
                               </p>
-                              <p className="mt-0.5 text-xs text-muted-foreground">
+                              <p className="mt-1 text-xs text-muted-foreground">
                                  {person.role}
                               </p>
                            </figcaption>
@@ -245,38 +233,6 @@ export default function AboutPage() {
          </section>
 
          <LogoWall />
-
-         <section className="px-6 py-24">
-            <div className="mx-auto w-full max-w-6xl">
-               <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-                  <HugeiconsIcon
-                     icon={SparklesIcon}
-                     strokeWidth={1.7}
-                     className="size-4 text-accent-strong"
-                  />
-                  How we got here
-               </div>
-
-               <ol className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                  {TIMELINE.map((item) => (
-                     <li
-                        key={item.year}
-                        className="flex h-full flex-col rounded-lg border border-border/70 p-5"
-                     >
-                        <span className="font-numeric text-xs font-medium tabular-nums text-accent-strong">
-                           {item.year}
-                        </span>
-                        <h3 className="mt-3 font-heading text-base font-medium tracking-tighter">
-                           {item.title}
-                        </h3>
-                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                           {item.copy}
-                        </p>
-                     </li>
-                  ))}
-               </ol>
-            </div>
-         </section>
 
          <PageCta
             title="Come build the boring version of money."

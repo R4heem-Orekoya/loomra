@@ -177,7 +177,7 @@ export default function SecurityPage() {
                   {CONTROLS.map((control) => (
                      <li
                         key={control.title}
-                        className="flex h-full flex-col overflow-hidden rounded-lg border border-border/50 bg-surface"
+                        className="flex h-full flex-col overflow-hidden rounded-lg border border-border/40 bg-muted/50"
                      >
                         <div className="px-5 py-5">
                            <div className="flex items-center gap-2.5">
@@ -212,7 +212,7 @@ export default function SecurityPage() {
                   ))}
                </ul>
 
-               <dl className="mt-3 grid grid-cols-2 overflow-hidden rounded-lg border border-border/50 bg-surface sm:grid-cols-4">
+               <dl className="mt-3 grid grid-cols-2 overflow-hidden rounded-lg border border-border/40 bg-muted/50 sm:grid-cols-4">
                   {STATS.map((stat, index) => (
                      <div
                         key={stat.label}
@@ -252,7 +252,7 @@ export default function SecurityPage() {
                   </p>
                </div>
 
-               <ol className="divide-y divide-border/50 overflow-hidden rounded-lg border border-border/50 bg-surface">
+               <ol className="divide-y divide-border/40 overflow-hidden rounded-lg border border-border/40 bg-muted/50">
                   {STEPS.map((step, index) => (
                      <li key={step.title} className="flex gap-4 px-5 py-5">
                         <span className="mt-0.5 font-numeric text-xs font-medium tabular-nums text-accent-strong">

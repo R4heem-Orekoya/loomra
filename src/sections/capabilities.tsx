@@ -16,6 +16,7 @@ import {
 import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { type ReactNode, useState } from "react";
 import { CreditCardServiceProvider } from "@/components/kibo-ui/credit-card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/motion/tabs";
@@ -90,7 +91,7 @@ const NAV: NavItem[] = [
 
 const NAV_FOR_CAPABILITY = ["Balances", "Send", "Cards"];
 
-const CARD = "rounded-lg border border-border/80 bg-secondary/50";
+const CARD = "rounded-lg border border-border/40 bg-muted/50";
 
 const ACCOUNT_NAV: NavItem[] = [
    { label: "Support", icon: CustomerSupportIcon },
@@ -174,6 +175,9 @@ export default function Capabilities() {
    const activeIndex = TAB_ITEMS.findIndex((item) => item.value === tab);
    const activeTab = TAB_ITEMS[activeIndex] ?? TAB_ITEMS[0];
 
+   const pathname = usePathname();
+   const isProductPage = pathname === "/product";
+
    return (
       <section
          id="capabilities"
@@ -221,6 +225,7 @@ export default function Capabilities() {
                      className={cn(
                         buttonVariants({ variant: "outline", size: "lg" }),
                         "max-w-fit",
+                        { hidden: isProductPage },
                      )}
                   >
                      Explore multi-currency accounts

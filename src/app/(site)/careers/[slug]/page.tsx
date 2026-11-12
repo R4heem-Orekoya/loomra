@@ -195,7 +195,7 @@ async function Role({ params }: RolePageProps) {
                   </div>
 
                   <aside className="lg:sticky lg:top-24 lg:self-start">
-                     <div className="rounded-xl border border-border/70 bg-secondary/40 p-5">
+                     <div className="rounded-xl border border-border/40 bg-muted/50 p-5">
                         <dl className="space-y-4">
                            {facts.map((fact) => (
                               <div key={fact.label}>
@@ -252,7 +252,7 @@ async function Role({ params }: RolePageProps) {
                      {HIRING_PROCESS.map((step) => (
                         <li
                            key={step.step}
-                           className="rounded-lg border border-border/70 p-4"
+                           className="rounded-lg border border-border/40 bg-muted/50 p-4"
                         >
                            <span className="font-numeric text-xs font-medium tabular-nums text-accent-strong">
                               {step.step}
@@ -286,7 +286,7 @@ async function Role({ params }: RolePageProps) {
                         <li key={item.slug}>
                            <Link
                               href={`/careers/${item.slug}`}
-                              className="group flex h-full flex-col rounded-lg border border-border/70 p-4 transition-colors hover:bg-secondary/40"
+                              className="group flex h-full flex-col rounded-lg border border-border/40 bg-muted/50 p-4 transition-colors hover:bg-muted/70"
                            >
                               <span className="flex items-start justify-between gap-3">
                                  <span className="text-sm font-medium tracking-tight">

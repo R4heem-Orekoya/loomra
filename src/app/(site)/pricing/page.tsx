@@ -74,7 +74,7 @@ export default function PricingPage() {
                   {PRINCIPLES.map((principle) => (
                      <li
                         key={principle.title}
-                        className="flex h-full flex-col rounded-lg border border-border/70 bg-secondary/40 p-5"
+                        className="flex h-full flex-col rounded-lg border border-border/40 bg-muted/50 p-5"
                      >
                         <span className="grid size-8 place-items-center rounded border border-border/70 bg-background">
                            <HugeiconsIcon
@@ -119,7 +119,7 @@ export default function PricingPage() {
                      </p>
                   </div>
 
-                  <dl className="divide-y divide-border/70 overflow-hidden rounded-lg border border-border/70">
+                  <dl className="divide-y divide-border/40 overflow-hidden rounded-lg border border-border/40 bg-muted/50">
                      {EXTRAS.map((extra) => (
                         <div
                            key={extra.label}

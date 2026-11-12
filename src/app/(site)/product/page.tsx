@@ -4,12 +4,13 @@ import {
    CreditCardIcon,
    Globe02Icon,
    MoneySend01Icon,
-   NfcIcon,
    Wallet01Icon,
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { ActivityCard, VirtualCard } from "@/components/hero-visual";
 import PageCta from "@/components/page-cta";
 import PageHero from "@/components/page-hero";
 import { buttonVariants } from "@/components/ui/button";
@@ -51,30 +52,33 @@ const PILLARS = [
 ];
 
 const CURRENCIES = [
-   "USD",
-   "EUR",
-   "GBP",
-   "NGN",
-   "CAD",
-   "AUD",
-   "JPY",
-   "CHF",
-   "CNY",
-   "AED",
-   "INR",
-   "ZAR",
-   "KES",
-   "GHS",
-   "BRL",
-   "MXN",
-   "SGD",
-   "HKD",
-   "SEK",
-   "NOK",
-   "DKK",
-   "PLN",
-   "TRY",
-   "ILS",
+   { code: "USD", flag: "us" },
+   { code: "EUR", flag: "eu" },
+   { code: "GBP", flag: "gb" },
+   { code: "NGN", flag: "ng" },
+   { code: "CAD", flag: "ca" },
+   { code: "AUD", flag: "au" },
+   { code: "JPY", flag: "jp" },
+   { code: "CHF", flag: "ch" },
+   { code: "CNY", flag: "cn" },
+   { code: "AED", flag: "ae" },
+   { code: "INR", flag: "in" },
+   { code: "ZAR", flag: "za" },
+   { code: "KES", flag: "ke" },
+   { code: "GHS", flag: "gh" },
+   { code: "BRL", flag: "br" },
+   { code: "MXN", flag: "mx" },
+   { code: "SGD", flag: "sg" },
+   { code: "HKD", flag: "hk" },
+   { code: "SEK", flag: "se" },
+   { code: "NOK", flag: "no" },
+   { code: "DKK", flag: "dk" },
+   { code: "PLN", flag: "pl" },
+   { code: "TRY", flag: "tr" },
+   { code: "KRW", flag: "kr" },
+   { code: "NZD", flag: "nz" },
+   { code: "SAR", flag: "sa" },
+   { code: "EGP", flag: "eg" },
 ];
 
 const CARD_POINTS = [
@@ -104,7 +108,7 @@ export default function ProductPage() {
                   <Link
                      href="/pricing"
                      className={cn(
-                        buttonVariants({ variant: "outline", size: "lg" }),
+                        buttonVariants({ variant: "secondary", size: "lg" }),
                         "h-10 px-6 text-sm",
                      )}
                   >
@@ -115,14 +119,14 @@ export default function ProductPage() {
          />
 
          <section className="px-6 pb-16">
-            <div className="mx-auto w-full max-w-5xl">
+            <div className="mx-auto w-full max-w-6xl">
                <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                   {PILLARS.map((pillar) => (
                      <li
                         key={pillar.title}
-                        className="flex h-full flex-col rounded-lg border border-border/70 bg-secondary/40 p-3"
+                        className="flex h-full flex-col rounded-lg border border-border/40 bg-muted/50 p-3"
                      >
-                        <span className="grid size-7 place-items-center rounded border border-border/70 bg-background">
+                        <span className="grid size-7.5 place-items-center rounded border border-border/70 bg-background">
                            <HugeiconsIcon
                               icon={pillar.icon}
                               strokeWidth={1.7}
@@ -135,7 +139,7 @@ export default function ProductPage() {
                         <p className="my-4 text-sm leading-snug text-muted-foreground">
                            {pillar.copy}
                         </p>
-                        <p className="text-xs font-medium text-accent-strong">
+                        <p className="text-xs mt-2 font-medium text-accent-strong">
                            {pillar.stat}
                         </p>
                      </li>
@@ -148,9 +152,9 @@ export default function ProductPage() {
 
          <section
             id="currencies"
-            className="scroll-mt-24 border-y border-border/60 px-6 py-24"
+            className="scroll-mt-24 border-border/60 px-6 py-24"
          >
-            <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-16">
+            <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.15fr] lg:items-center lg:gap-16">
                <div>
                   <span className="text-sm font-medium text-muted-foreground">
                      Currencies
@@ -173,17 +177,29 @@ export default function ProductPage() {
                   </p>
                </div>
 
-               <ul className="flex flex-wrap gap-1.5">
+               <ul
+                  aria-label="Currencies supported"
+                  className="flex flex-wrap gap-2"
+               >
                   {CURRENCIES.map((currency) => (
                      <li
-                        key={currency}
-                        className="rounded-md border border-border/70 bg-secondary/40 px-2.5 py-1.5 font-numeric text-xs font-medium tracking-tight text-muted-foreground"
+                        key={currency.code}
+                        className="inline-flex items-center gap-2 rounded-full border border-border/30 bg-secondary py-0.5 pr-2 pl-0.5 text-xs font-semibold uppercase tracking-wide text-paper-ink/75"
                      >
-                        {currency}
+                        <Image
+                           src={`/flags/${currency.flag}.svg`}
+                           alt=""
+                           width={20}
+                           height={20}
+                           unoptimized
+                           draggable={false}
+                           className="size-5 shrink-0 rounded-full border border-border/20 object-cover"
+                        />
+                        {currency.code}
                      </li>
                   ))}
-                  <li className="rounded-md border border-dashed border-border/70 px-2.5 py-1.5 text-xs font-medium tracking-tight text-muted-foreground">
-                     +16 more
+                  <li className="inline-flex items-center rounded-full border border-dashed border-border/70 px-3 py-0.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                     +13 more
                   </li>
                </ul>
             </div>
@@ -248,54 +264,14 @@ function CardStack() {
    return (
       <div
          aria-hidden="true"
-         className="relative mx-auto aspect-[1.35] w-full max-w-md select-none"
+         className="relative mx-auto w-full max-w-md select-none pb-20"
       >
-         <div className="absolute inset-x-8 top-6 h-[70%] rotate-6 rounded-xl border border-white/10 bg-[#0D5C3A] shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)]" />
-
-         <div className="absolute inset-x-2 top-0 flex h-[78%] flex-col justify-between overflow-hidden rounded-xl bg-[#0b3d27] p-5 text-white shadow-[0_30px_60px_-24px_rgba(0,0,0,0.55)]">
-            <div className="flex items-start justify-between">
-               <span className="font-heading text-lg font-semibold tracking-tighter">
-                  Loomra
-               </span>
-               <span className="rounded-full border border-white/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/70">
-                  Virtual
-               </span>
-            </div>
-
-            <div>
-               <div className="flex items-center gap-2">
-                  <span className="h-6 w-8 rounded-sm bg-gradient-to-br from-[#e8c98a] to-[#b58f45]" />
-                  <HugeiconsIcon
-                     icon={NfcIcon}
-                     strokeWidth={1.6}
-                     className="size-4 text-white/60"
-                  />
-               </div>
-               <p className="mt-3 font-numeric text-[13px] tracking-[0.14em] text-white/85">
-                  •••• •••• •••• 4821
-               </p>
-               <div className="mt-3 flex items-end justify-between text-[10px] uppercase tracking-[0.12em] text-white/65">
-                  <span>Raheem Orekoya</span>
-                  <span>09/29</span>
-               </div>
-            </div>
+         <div className="mx-2">
+            <VirtualCard />
          </div>
 
-         <div className="absolute inset-x-10 top-[46%] flex h-[38%] flex-col justify-between rounded-xl border border-border/70 bg-background p-4 text-foreground shadow-[0_24px_50px_-30px_rgba(0,0,0,0.5)]">
-            <div className="flex items-center justify-between">
-               <span className="text-xs font-medium tracking-tight">
-                  Subscriptions
-               </span>
-               <span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                  Frozen
-               </span>
-            </div>
-            <div className="flex items-end justify-between">
-               <p className="font-numeric text-xs tracking-[0.12em] text-muted-foreground">
-                  •••• 9042
-               </p>
-               <p className="text-xs font-medium">$60 / month</p>
-            </div>
+         <div className="absolute right-0 bottom-0 w-[74%] -rotate-3">
+            <ActivityCard />
          </div>
       </div>
    );

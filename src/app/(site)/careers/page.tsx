@@ -12,7 +12,9 @@ import Image from "next/image";
 import Link from "next/link";
 import PageCta from "@/components/page-cta";
 import PageHero from "@/components/page-hero";
+import { buttonVariants } from "@/components/ui/button";
 import { HIRING_PROCESS, ROLES } from "@/lib/roles";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
    title: "Careers",
@@ -45,6 +47,21 @@ const PERKS = [
 
 const TEAM_COUNT = new Set(ROLES.map((role) => role.team)).size;
 
+const ROLE_GROUPS = Array.from(new Set(ROLES.map((role) => role.team))).map(
+   (team) => ({
+      team,
+      roles: ROLES.filter((role) => role.team === team),
+   }),
+);
+
+function getWorkMode(location: string) {
+   return location.toLowerCase().includes("remote") ? "Remote" : "Hybrid";
+}
+
+function getRoleLocation(location: string) {
+   return location.replace(/^Remote\s*—\s*/, "");
+}
+
 export default function CareersPage() {
    return (
       <>
@@ -53,8 +70,8 @@ export default function CareersPage() {
             title="Build the boring version of money."
             description="A small team, a product people use every day, and a problem that is genuinely hard to solve well. We are hiring across engineering, design, compliance and operations."
             aside={
-               <div className="rounded-xl border border-border/70 bg-secondary/40 p-5">
-                  <p className="font-heading text-3xl font-medium tracking-tighter">
+               <div className="rounded-lg border border-border/40 bg-muted/50 p-4">
+                  <p className="font-heading text-2xl font-medium tracking-tighter">
                      {ROLES.length} roles
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -69,43 +86,44 @@ export default function CareersPage() {
             <div className="mx-auto w-full max-w-6xl">
                <figure className="relative overflow-hidden rounded-xl border border-border/70 bg-secondary">
                   <Image
-                     src="/careers/team-workshop.jpg"
-                     alt="The Loomra team working through a problem around a shared table"
-                     width={1600}
-                     height={1000}
+                     src="/careers/careers-team.jpg"
+                     alt="A team of five people working side by side on laptops around a shared table"
+                     width={2400}
+                     height={1601}
+                     quality={90}
                      priority
                      sizes="(min-width: 1152px) 1104px, 100vw"
-                     className="h-[260px] w-full object-cover object-center sm:h-[340px] lg:h-[420px]"
+                     className="h-[300px] w-full object-cover object-center sm:h-[400px] lg:h-[560px]"
                   />
-                  <figcaption className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/75 via-black/25 to-transparent p-5 sm:p-6">
+                  <figcaption className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/80 via-black/50 to-transparent p-5 sm:p-6">
                      <p className="max-w-md text-pretty text-sm font-medium text-white">
-                        Most of what we ship starts on a wall of sticky notes,
-                        not in a roadmap tool.
+                        Most of what we ship starts in a room with the people
+                        who will build it.
                      </p>
                   </figcaption>
                </figure>
             </div>
          </section>
 
-         <section className="px-6 pb-16">
+         <section className="px-6 pb-20">
             <div className="mx-auto w-full max-w-6xl">
                <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                   {PERKS.map((perk) => (
                      <li
                         key={perk.title}
-                        className="flex h-full flex-col rounded-lg border border-border/70 bg-secondary/40 p-5"
+                        className="flex h-full flex-col rounded-lg border border-border/40 bg-muted/50 p-4"
                      >
-                        <span className="grid size-8 place-items-center rounded border border-border/70 bg-background">
+                        <span className="grid size-7.5 place-items-center rounded border border-border/70 bg-background">
                            <HugeiconsIcon
                               icon={perk.icon}
                               strokeWidth={1.7}
                               className="size-4 text-accent-strong"
                            />
                         </span>
-                        <h2 className="mt-4 font-heading text-base font-medium tracking-tighter">
+                        <h2 className="mt-2.5 font-heading text-base font-medium tracking-tighter">
                            {perk.title}
                         </h2>
-                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                            {perk.copy}
                         </p>
                      </li>
@@ -114,7 +132,7 @@ export default function CareersPage() {
             </div>
          </section>
 
-         <section className="border-t border-border/60 px-6 py-24">
+         <section id="open-roles" className="scroll-mt-24 px-6 py-24">
             <div className="mx-auto w-full max-w-6xl">
                <div className="flex flex-wrap items-end justify-between gap-4">
                   <h2 className="text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl">
@@ -125,45 +143,77 @@ export default function CareersPage() {
                   </p>
                </div>
 
-               <ul className="mt-8 divide-y divide-border/70 overflow-hidden rounded-lg border border-border/70">
-                  {ROLES.map((role) => (
-                     <li key={role.slug}>
-                        <Link
-                           href={`/careers/${role.slug}`}
-                           className="group grid gap-2 px-5 py-4 transition-colors hover:bg-secondary/50 sm:grid-cols-[1.4fr_0.7fr_0.7fr_auto] sm:items-center sm:gap-6"
-                        >
-                           <span>
-                              <span className="block text-sm font-medium tracking-tight">
-                                 {role.title}
-                              </span>
-                              <span className="mt-0.5 block text-xs text-muted-foreground">
-                                 {role.team} · {role.type}
-                              </span>
+               <div className="mt-10 space-y-10">
+                  {ROLE_GROUPS.map((group) => (
+                     <div key={group.team}>
+                        <h3 className="flex items-baseline gap-2 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                           {group.team}
+                           <span className="font-numeric text-xs font-normal tracking-normal text-muted-foreground">
+                              [{group.roles.length}]
                            </span>
-                           <span className="text-xs text-muted-foreground">
-                              {role.location}
-                           </span>
-                           <span className="rounded-full border border-border/70 px-2.5 py-1 text-[11px] font-medium text-muted-foreground sm:justify-self-start">
-                              {role.team}
-                           </span>
-                           <HugeiconsIcon
-                              icon={ArrowUpRight01Icon}
-                              strokeWidth={1.8}
-                              className="hidden size-4 text-muted-foreground transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none sm:block"
-                           />
-                        </Link>
-                     </li>
-                  ))}
-               </ul>
+                        </h3>
 
-               <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
-                  Nothing quite fits? Send a note to careers@loomra.com and tell
-                  us what you would build.
+                        <ul className="mt-3 divide-y border-b">
+                           {group.roles.map((role) => (
+                              <li key={role.slug}>
+                                 <Link
+                                    href={`/careers/${role.slug}`}
+                                    className="group -mx-3 my-0.5 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-1 rounded-lg px-3 py-4 transition-colors hover:bg-secondary sm:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)_auto] sm:gap-6"
+                                 >
+                                    <span className="min-w-0">
+                                       <span className="block text-sm font-medium tracking-tight">
+                                          {role.title}
+                                       </span>
+                                       <span className="mt-1 block text-xs text-muted-foreground sm:hidden">
+                                          {role.type} ·{" "}
+                                          {getWorkMode(role.location)} ·{" "}
+                                          {getRoleLocation(role.location)}
+                                       </span>
+                                    </span>
+
+                                    <span className="hidden text-xs text-muted-foreground sm:block">
+                                       {role.type} ·{" "}
+                                       {getWorkMode(role.location)} ·{" "}
+                                       {getRoleLocation(role.location)}
+                                    </span>
+
+                                    <span
+                                       className={cn(
+                                          buttonVariants({
+                                             variant: "outline",
+                                             size: "icon-sm",
+                                          }),
+                                          "shrink-0 text-muted-foreground",
+                                       )}
+                                    >
+                                       <HugeiconsIcon
+                                          icon={ArrowUpRight01Icon}
+                                          strokeWidth={2}
+                                          className="transition-colors group-hover:text-emerald-500"
+                                       />
+                                    </span>
+                                 </Link>
+                              </li>
+                           ))}
+                        </ul>
+                     </div>
+                  ))}
+               </div>
+
+               <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
+                  Nothing quite fits? Send a note to{" "}
+                  <a
+                     href="mailto:careers@loomra.com"
+                     className="font-medium text-accent-strong underline-offset-4 hover:underline"
+                  >
+                     careers@loomra.com
+                  </a>{" "}
+                  and tell us what you would build.
                </p>
             </div>
          </section>
 
-         <section className="px-6 pb-24">
+         <section className="px-6 py-32">
             <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
                <div>
                   <h2 className="text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl">
@@ -185,7 +235,7 @@ export default function CareersPage() {
                   </p>
                </div>
 
-               <ol className="divide-y divide-border/70 overflow-hidden rounded-lg border border-border/70">
+               <ol className="divide-y divide-border/50 overflow-hidden rounded-lg border border-border/40 bg-muted/50">
                   {HIRING_PROCESS.map((step) => (
                      <li key={step.step} className="flex gap-4 px-5 py-4">
                         <span className="mt-0.5 font-numeric text-xs font-medium tabular-nums text-accent-strong">

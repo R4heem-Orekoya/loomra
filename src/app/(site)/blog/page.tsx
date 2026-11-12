@@ -25,7 +25,7 @@ export default function BlogPage() {
 
          <section className="px-6 pb-16">
             <div className="mx-auto w-full max-w-6xl">
-               <article className="group relative overflow-hidden rounded-xl border border-border/70 bg-secondary/40">
+               <article className="group relative overflow-hidden rounded-xl border border-border/40 bg-muted/50">
                   <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
                      <div className="flex flex-col p-6 sm:p-8">
                         <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
@@ -85,7 +85,7 @@ export default function BlogPage() {
                      <li key={post.slug}>
                         <Link
                            href={`/blog/${post.slug}`}
-                           className="group flex h-full flex-col rounded-xl border border-border/70 p-6 transition-colors hover:border-border hover:bg-secondary/40"
+                           className="group flex h-full flex-col rounded-xl border border-border/40 bg-muted/50 p-6 transition-colors hover:border-border hover:bg-muted/70"
                         >
                            <span className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                               <span className="rounded-full border border-border/70 px-2.5 py-1 font-medium">

@@ -15,7 +15,7 @@ type Step = {
    Art: () => ReactNode;
 };
 
-const CARD = "rounded-lg border border-border/80 bg-secondary/50";
+const CARD = "rounded-lg border border-border/40 bg-muted/50";
 
 const ACCOUNTS = [
    { code: "USD", flag: "us", tail: "4821" },

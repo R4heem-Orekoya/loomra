@@ -50,7 +50,7 @@ export default function PressPage() {
 
          <section className="px-6 pb-16">
             <div className="mx-auto grid w-full max-w-6xl gap-3 lg:grid-cols-2">
-               <div className="flex flex-col rounded-xl border border-border/70 bg-secondary/40 p-5 sm:p-6">
+               <div className="flex flex-col rounded-xl border border-border/40 bg-muted/50 p-5 sm:p-6">
                   <span className="grid size-8 place-items-center rounded border border-border/70 bg-background">
                      <HugeiconsIcon
                         icon={Mail01Icon}
@@ -79,7 +79,7 @@ export default function PressPage() {
                   </a>
                </div>
 
-               <div className="rounded-xl border border-border/70 p-5 sm:p-6">
+               <div className="rounded-xl border border-border/40 bg-muted/50 p-5 sm:p-6">
                   <h2 className="font-heading text-xl font-medium tracking-tighter">
                      The short version
                   </h2>
@@ -122,12 +122,12 @@ export default function PressPage() {
 
                <div className="mt-8 grid gap-3 lg:grid-cols-[0.9fr_1.1fr]">
                   <div className="flex flex-col gap-3">
-                     <div className="flex aspect-[2/1] items-center justify-center rounded-xl border border-border/70 bg-[#E9F0E9]">
+                     <div className="flex aspect-[2/1] items-center justify-center rounded-xl border border-border/40 bg-[#E9F0E9]">
                         <span className="font-heading text-4xl font-semibold tracking-tighter text-[#121712]">
                            Loomra
                         </span>
                      </div>
-                     <div className="flex aspect-[2/1] items-center justify-center rounded-xl border border-border/70 bg-[#0D5C3A]">
+                     <div className="flex aspect-[2/1] items-center justify-center rounded-xl border border-border/40 bg-[#0D5C3A]">
                         <span className="font-heading text-4xl font-semibold tracking-tighter text-white">
                            Loomra
                         </span>
@@ -138,7 +138,7 @@ export default function PressPage() {
                      {COLOURS.map((colour) => (
                         <div
                            key={colour.name}
-                           className="overflow-hidden rounded-xl border border-border/70"
+                           className="overflow-hidden rounded-xl border border-border/40 bg-muted/50"
                         >
                            <div className={`h-24 ${colour.className}`} />
                            <div className="flex items-baseline justify-between px-4 py-3">

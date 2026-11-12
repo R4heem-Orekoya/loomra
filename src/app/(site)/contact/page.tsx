@@ -57,7 +57,7 @@ export default function ContactPage() {
          <section className="px-6 pb-24">
             <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
                <div>
-                  <ul className="divide-y divide-border/70 overflow-hidden rounded-xl border border-border/70">
+                  <ul className="divide-y divide-border/40 overflow-hidden rounded-xl border border-border/40 bg-muted/50">
                      {CHANNELS.map((channel) => (
                         <li
                            key={channel.title}
@@ -93,7 +93,7 @@ export default function ContactPage() {
                      ))}
                   </ul>
 
-                  <div className="mt-4 rounded-xl border border-border/70 bg-secondary/40 px-5 py-4">
+                  <div className="mt-4 rounded-xl border border-border/40 bg-muted/50 px-5 py-4">
                      <div className="flex items-center gap-2 text-xs font-medium">
                         <HugeiconsIcon
                            icon={Location01Icon}

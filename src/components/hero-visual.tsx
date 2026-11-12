@@ -84,7 +84,7 @@ function BalanceCard({ className }: PanelProps) {
    );
 }
 
-function VirtualCard({ className }: PanelProps) {
+export function VirtualCard({ className }: PanelProps) {
    return (
       // `@container` makes the card its own query container for the type scale.
       // Its own padding can't use `cqw` (an element can't query itself), so it
@@ -141,7 +141,7 @@ function VirtualCard({ className }: PanelProps) {
    );
 }
 
-function ActivityCard({ className }: PanelProps) {
+export function ActivityCard({ className }: PanelProps) {
    return (
       <div
          className={cn(

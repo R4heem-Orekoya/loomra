@@ -27,7 +27,7 @@ export default function ContactForm() {
 
    if (sent) {
       return (
-         <output className="flex h-full flex-col items-start justify-center rounded-xl border border-border/70 bg-secondary/40 p-6 sm:p-8">
+         <output className="flex h-full flex-col items-start justify-center rounded-xl border border-border/40 bg-muted/50 p-6 sm:p-8">
             <span className="grid size-10 place-items-center rounded-full bg-accent-strong/10 text-accent-strong">
                <HugeiconsIcon
                   icon={CheckmarkCircle02Icon}
@@ -59,7 +59,7 @@ export default function ContactForm() {
    return (
       <form
          onSubmit={handleSubmit}
-         className="rounded-xl border border-border/70 bg-secondary/30 p-5 sm:p-6"
+         className="rounded-xl border border-border/40 bg-muted/50 p-5 sm:p-6"
       >
          <div className="grid gap-4 sm:grid-cols-2">
             <div className="flex flex-col gap-1.5">

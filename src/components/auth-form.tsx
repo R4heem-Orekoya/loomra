@@ -33,7 +33,7 @@ export default function AuthForm({ mode }: { mode: "signup" | "login" }) {
 
    if (submitted) {
       return (
-         <output className="flex flex-col items-start rounded-xl border border-border/70 bg-secondary/40 p-6 sm:p-8">
+         <output className="flex flex-col items-start rounded-xl border border-border/40 bg-muted/50 p-6 sm:p-8">
             <span className="grid size-10 place-items-center rounded-full bg-accent-strong/10 text-accent-strong">
                <HugeiconsIcon
                   icon={CheckmarkCircle02Icon}
@@ -73,7 +73,7 @@ export default function AuthForm({ mode }: { mode: "signup" | "login" }) {
    return (
       <form
          onSubmit={handleSubmit}
-         className="rounded-xl border border-border/70 bg-background p-5 shadow-[0_24px_60px_-40px_rgba(0,0,0,0.35)] sm:p-6"
+         className="rounded-xl border border-border/40 bg-muted/50 p-5 shadow-[0_24px_60px_-40px_rgba(0,0,0,0.35)] sm:p-6"
       >
          <div className="flex items-baseline justify-between gap-4">
             <h2 className="font-heading text-xl font-medium tracking-tighter">

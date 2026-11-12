@@ -31,7 +31,7 @@ export default function HelpPage() {
 
          <section className="px-6 pt-16 pb-24">
             <div className="mx-auto w-full max-w-6xl">
-               <div className="flex flex-col items-start justify-between gap-6 rounded-xl border border-border/70 bg-secondary/50 p-6 sm:flex-row sm:items-center sm:p-8">
+               <div className="flex flex-col items-start justify-between gap-6 rounded-xl border border-border/40 bg-muted/50 p-6 sm:flex-row sm:items-center sm:p-8">
                   <div className="flex items-start gap-4">
                      <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-border/70 bg-background">
                         <HugeiconsIcon

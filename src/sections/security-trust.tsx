@@ -93,7 +93,7 @@ const THEME_ENTER_AT = 0.32;
 const THEME_EXIT_AT = 0.45;
 const THEME_SHIFT_MS = 500;
 
-const SURFACE = "bg-surface";
+const SURFACE = "bg-muted/50";
 const INSET = "bg-surface-inset";
 const CHIP = "bg-surface-chip";
 

@@ -120,7 +120,7 @@ async function LegalDoc({ params }: LegalPageProps) {
                            <li key={item.slug}>
                               <Link
                                  href={`/legal/${item.slug}`}
-                                 className="flex h-full items-center rounded-lg border border-border/70 px-3 py-2.5 text-sm font-medium tracking-tight transition-colors hover:bg-secondary/60"
+                                 className="flex h-full items-center rounded-lg border border-border/40 bg-muted/50 px-3 py-2.5 text-sm font-medium tracking-tight transition-colors hover:bg-muted/70"
                               >
                                  {item.title}
                               </Link>
