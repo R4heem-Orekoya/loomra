@@ -22,28 +22,40 @@ const COLUMNS: FooterColumn[] = [
    {
       title: "Product",
       links: [
-         { label: "The account", href: "#capabilities" },
-         { label: "Pricing", href: "#fees" },
-         { label: "How it works", href: "#how-it-works" },
-         { label: "Security", href: "#security" },
+         { label: "The account", href: "/product" },
+         { label: "Send money", href: "/product#how-it-works" },
+         { label: "Virtual cards", href: "/product#cards" },
+         { label: "Pricing", href: "/pricing" },
+         { label: "Security", href: "/security" },
       ],
    },
    {
       title: "Company",
       links: [
-         { label: "About", href: "#" },
-         { label: "Careers", href: "#" },
-         { label: "Press", href: "#" },
-         { label: "Contact", href: "mailto:hello@loomra.com" },
+         { label: "About", href: "/about" },
+         { label: "Careers", href: "/careers" },
+         { label: "Press", href: "/press" },
+         { label: "Blog", href: "/blog" },
+         { label: "Contact", href: "/contact" },
+      ],
+   },
+   {
+      title: "Resources",
+      links: [
+         { label: "Help centre", href: "/help" },
+         { label: "Guides", href: "/blog" },
+         { label: "Supported currencies", href: "/product#currencies" },
+         { label: "Sign up", href: "/signup" },
       ],
    },
    {
       title: "Legal",
       links: [
-         { label: "Terms", href: "#" },
-         { label: "Privacy", href: "#" },
-         { label: "Cookies", href: "#" },
-         { label: "Complaints", href: "#" },
+         { label: "Terms", href: "/legal/terms" },
+         { label: "Privacy", href: "/legal/privacy" },
+         { label: "Cookies", href: "/legal/cookies" },
+         { label: "Complaints", href: "/legal/complaints" },
+         { label: "Disclosures", href: "/legal/disclosures" },
       ],
    },
 ];
@@ -56,9 +68,9 @@ const SOCIALS: Social[] = [
 
 export default function Footer() {
    return (
-      <footer className="text-paper-ink">
+      <footer className="border-t border-border/60 text-foreground">
          <div className="mx-auto w-full max-w-6xl px-6">
-            <div className="mt-20 grid gap-12 pb-16 sm:grid-cols-2 lg:grid-cols-[1.5fr_repeat(3,0.65fr)] lg:gap-10">
+            <div className="mt-20 grid gap-12 pb-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_repeat(4,0.72fr)] lg:gap-8">
                <div className="max-w-xs">
                   <Link
                      href="/"
@@ -70,7 +82,7 @@ export default function Footer() {
                      </span>
                   </Link>
 
-                  <p className="mt-4 text-pretty text-sm leading-relaxed text-paper-muted">
+                  <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground">
                      The multi-currency account for money that crosses borders.
                   </p>
 
@@ -92,7 +104,7 @@ export default function Footer() {
                            <a
                               href={social.href}
                               aria-label={social.label}
-                              className="inline-flex text-paper-muted transition-colors hover:text-paper-ink"
+                              className="inline-flex text-muted-foreground transition-colors hover:text-foreground"
                            >
                               <HugeiconsIcon
                                  icon={social.icon}
@@ -107,15 +119,15 @@ export default function Footer() {
 
                {COLUMNS.map((column) => (
                   <nav key={column.title} aria-label={column.title}>
-                     <h3 className="text-xs font-medium uppercase tracking-wider text-paper-muted">
+                     <h2 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
                         {column.title}
-                     </h3>
+                     </h2>
                      <ul className="mt-5 space-y-3">
                         {column.links.map((link) => (
                            <li key={link.label}>
                               <Link
                                  href={link.href}
-                                 className="text-sm text-paper-ink/80 font-medium transition-colors hover:text-paper-ink"
+                                 className="text-sm text-foreground/80 font-medium transition-colors hover:text-foreground"
                               >
                                  {link.label}
                               </Link>
@@ -126,11 +138,11 @@ export default function Footer() {
                ))}
             </div>
 
-            <div className="flex flex-col gap-6 pb-12 text-xs leading-relaxed text-paper-muted lg:flex-row lg:items-end lg:justify-between lg:gap-16">
+            <div className="flex flex-col gap-6 pb-12 text-xs leading-relaxed text-muted-foreground lg:flex-row lg:items-end lg:justify-between lg:gap-16">
                <p className="max-w-2xl text-pretty">
                   Loomra is a financial technology company, not a bank. Account,
                   card and transfer services are provided by licensed partners.
-                  Rates, fees and arrival times shown on this page are
+                  Rates, fees and arrival times shown on this site are
                   illustrative. This site is a product concept.
                </p>
 
@@ -138,7 +150,7 @@ export default function Footer() {
                   <p>© 2026 Loomra. All rights reserved.</p>
                   <a
                      href="#top"
-                     className="inline-flex items-center gap-1.5 text-paper-ink transition-colors hover:text-paper-muted"
+                     className="inline-flex items-center gap-1.5 text-foreground transition-colors hover:text-muted-foreground"
                   >
                      Back to top
                      <span aria-hidden="true">↑</span>
@@ -157,7 +169,7 @@ export default function Footer() {
                      y="226"
                      textLength="950"
                      lengthAdjust="spacingAndGlyphs"
-                     className="fill-paper-ink font-heading"
+                     className="fill-foreground font-heading"
                      fontSize="270"
                      fontWeight="500"
                   >

@@ -15,10 +15,11 @@ import {
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
+import Link from "next/link";
 import { type ReactNode, useState } from "react";
 import { CreditCardServiceProvider } from "@/components/kibo-ui/credit-card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/motion/tabs";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import UserAvatar from "@/components/user-avatar";
 import { formatUsd, transferFee } from "@/lib/fees";
 import { cn } from "@/lib/utils";
@@ -215,9 +216,15 @@ export default function Capabilities() {
                      rate, and send money wherever it needs to go.
                   </p>
 
-                  <Button className="max-w-fit " size="lg" variant="outline">
+                  <Link
+                     href="/product"
+                     className={cn(
+                        buttonVariants({ variant: "outline", size: "lg" }),
+                        "max-w-fit",
+                     )}
+                  >
                      Explore multi-currency accounts
-                  </Button>
+                  </Link>
                </div>
             </header>
 

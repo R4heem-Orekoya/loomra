@@ -28,7 +28,7 @@ export default function Hero() {
             <div className="flex flex-col items-center gap-3 mt-6">
                <div className="flex items-center justify-center gap-1">
                   <Link
-                     href="#open-account"
+                     href="/signup"
                      className={cn(
                         buttonVariants({ size: "lg" }),
                         "h-10 max-w-fit px-8 text-sm",

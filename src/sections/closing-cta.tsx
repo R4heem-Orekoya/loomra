@@ -2,7 +2,7 @@ import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const DETAILS = ["Free to open", "No monthly fee", "Close any time"];
@@ -57,8 +57,7 @@ export default function ClosingCta() {
                   id="cta-heading"
                   className="text-balance font-heading text-4xl font-medium leading-[0.9] tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
                >
-                  Ready when 
-                  you are.
+                  Ready when you are.
                </h2>
 
                <p className="mt-6 max-w-lg text-pretty text-sm leading-relaxed text-paper-muted">
@@ -68,12 +67,12 @@ export default function ClosingCta() {
                </p>
 
                <div className="mt-12 flex items-center justify-center gap-2">
-                  <Button
-                     size="lg"
-                     className="h-10 bg-paper-ink px-7 text-sm text-paper hover:bg-paper-ink/85"
+                  <Link
+                     href="/signup"
+                     className="inline-flex h-10 items-center justify-center rounded-full bg-paper-ink px-7 text-sm font-medium text-paper transition-colors hover:bg-paper-ink/85"
                   >
                      Open an account
-                  </Button>
+                  </Link>
 
                   <Link
                      href="#"

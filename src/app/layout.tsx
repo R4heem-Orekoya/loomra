@@ -18,7 +18,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-   title: "Loomra — Money, Without Borders",
+   title: {
+      default: "Loomra — Money, Without Borders",
+      template: "%s — Loomra",
+   },
    description:
       "Hold 40+ currencies, convert at the real rate, send money to 100+ countries and spend online with a virtual card.",
 };

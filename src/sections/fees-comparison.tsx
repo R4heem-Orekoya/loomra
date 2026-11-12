@@ -79,7 +79,7 @@ export default function FeesComparison() {
 
                <div className="mx-auto mt-12 flex flex-col items-center justify-center gap-3 dark sm:flex-row sm:gap-0">
                   <Link
-                     href="#open-account"
+                     href="/signup"
                      className={cn(
                         buttonVariants({ size: "lg" }),
                         "h-10 max-w-fit px-8 text-sm",
@@ -88,7 +88,7 @@ export default function FeesComparison() {
                      Open an account
                   </Link>
                   <Link
-                     href="#how-it-works"
+                     href="/product#how-it-works"
                      className={cn(
                         buttonVariants({ variant: "link", size: "lg" }),
                         "h-10 max-w-fit px-7 text-sm",

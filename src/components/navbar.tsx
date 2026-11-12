@@ -75,7 +75,7 @@ export default function Navbar() {
             }
             className={cn(
                "flex h-11 w-full items-center justify-between border transition-[background-color,border-color,box-shadow] ease-out",
-               reduceMotion ? "duration-0" : "duration-[400ms]",
+               reduceMotion ? "duration-0" : "duration-400ms",
                scrolled
                   ? "border-border/80 bg-background/80 text-foreground shadow-[0_12px_40px_-12px_rgb(0_0_0/0.18)] dark"
                   : "border-transparent bg-transparent shadow-none",

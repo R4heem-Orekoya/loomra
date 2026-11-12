@@ -1,5 +1,3 @@
-import Footer from "@/components/footer";
-import Navbar from "@/components/navbar";
 import Capabilities from "@/sections/capabilities";
 import ClosingCta from "@/sections/closing-cta";
 import Faq from "@/sections/faq";
@@ -14,28 +12,24 @@ import UsedBy from "@/sections/used-by";
 export default function Home() {
    return (
       <>
-         <Navbar />
-         <main id="top" className="flex min-h-[calc(100dvh-40px)] flex-col">
-            <Hero />
-            <LogoWall />
+         <Hero />
+         <LogoWall />
 
-            <FeesComparison />
+         <FeesComparison />
 
-            <Capabilities />
+         <Capabilities />
 
-            <GetPaid />
+         <GetPaid />
 
-            <SecurityTrust />
+         <SecurityTrust />
 
-            <Testimonials />
+         <Testimonials />
 
-            <UsedBy />
+         <UsedBy />
 
-            <Faq />
+         <Faq />
 
-            <ClosingCta />
-         </main>
-         <Footer />
+         <ClosingCta />
       </>
    );
 }
