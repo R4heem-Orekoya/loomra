@@ -46,7 +46,7 @@ const TAB_ITEMS = [
    {
       value: "accounts",
       label: "Global accounts",
-      image: "/bg-1.png",
+      image: "/bg-1.webp",
       screen: 0,
       heading: "Hold funds in any currency",
       description:
@@ -55,7 +55,7 @@ const TAB_ITEMS = [
    {
       value: "send",
       label: "Send money",
-      image: "/bg-2.png",
+      image: "/bg-2.webp",
       screen: 1,
       heading: "Send money in seconds",
       description:
@@ -64,7 +64,7 @@ const TAB_ITEMS = [
    {
       value: "cards",
       label: "Virtual cards",
-      image: "/bg-3.png",
+      image: "/bg-3.webp",
       screen: 2,
       heading: "Spend from any balance",
       description:

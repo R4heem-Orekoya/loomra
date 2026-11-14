@@ -4,6 +4,7 @@ import {
    type ComponentProps,
    createContext,
    type HTMLAttributes,
+   type KeyboardEvent as ReactKeyboardEvent,
    type ReactNode,
    useContext,
    useEffect,
@@ -53,27 +54,42 @@ export const CreditCardFlipper = ({
    const supportsHover = useSupportsHover();
    const [isFlipped, setIsFlipped] = useState(false);
 
+   const toggleFlip = () => {
+      setIsFlipped((prev) => !prev);
+   };
+
    const handleClick = () => {
       if (!supportsHover) {
-         setIsFlipped((prev) => !prev);
+         toggleFlip();
+      }
+   };
+
+   const handleKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+      if (event.key === "Enter" || event.key === " ") {
+         event.preventDefault();
+         toggleFlip();
       }
    };
 
    return (
       <CreditCardFlipContext.Provider value={true}>
-         {/* biome-ignore lint/nursery/noStaticElementInteractions: tap to flip for touch devices */}
+         {/* biome-ignore lint/a11y/useSemanticElements: the flipper wraps block-level card content, so a native button would be invalid HTML */}
          <div
             aria-label="Flip credit card"
             className={cn(
                "h-full w-full",
                "@xs:rounded-2xl rounded-lg",
                "transform-3d transition duration-700 ease-in-out",
+               !supportsHover && "cursor-pointer",
                supportsHover &&
                   "group-hover/kibo-credit-card:-rotate-y-180 group-hover/kibo-credit-card:shadow-lg",
-               !supportsHover && isFlipped && "-rotate-y-180 shadow-lg",
+               isFlipped && "-rotate-y-180 shadow-lg",
                className,
             )}
             onClick={handleClick}
+            onKeyDown={handleKeyDown}
+            role="button"
+            tabIndex={0}
             {...props}
          >
             {children}

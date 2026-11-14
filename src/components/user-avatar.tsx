@@ -12,15 +12,17 @@ interface UserAvatarProps {
    className?: string;
    image?: string;
    name: string;
+   seed?: string;
 }
 
 export default function UserAvatar({
    name,
    image,
+   seed,
    className,
 }: UserAvatarProps) {
    const avatar = new Dicebear(style, {
-      seed: name,
+      seed: seed ?? name,
       size: 128,
       tags: ["animation"],
       // backgroundColor: ["e8c98a", "e8a08a", "a8cbe8", "b9d8ae", "f0c4d0"],

@@ -2,11 +2,11 @@
 
 import { PauseIcon, PlayIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
-import Image from "next/image";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Autoplay, Keyboard } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperClass } from "swiper/types";
+import UserAvatar from "@/components/user-avatar";
 import { cn } from "@/lib/utils";
 import "swiper/css";
 
@@ -254,13 +254,10 @@ function TestimonialSlide({ testimonial }: { testimonial: Testimonial }) {
          </blockquote>
 
          <figcaption className="mt-10 flex items-center gap-3">
-            <Image
-               src={`https://api.dicebear.com/10.x/glass/svg?seed=${testimonial.seed}`}
-               alt=""
-               width={40}
-               height={40}
-               unoptimized
-               className="size-12 shrink-0 rounded-full bg-secondary"
+            <UserAvatar
+               name={testimonial.name}
+               seed={testimonial.seed}
+               className="size-12 shrink-0"
             />
             <span className="text-left">
                <span className="block font-heading text-base font-medium tracking-tight">

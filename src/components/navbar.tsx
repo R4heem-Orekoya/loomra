@@ -107,7 +107,7 @@ export default function Navbar() {
 
             <div className="flex items-center gap-4 absolute right-1">
                <Link
-                  href="#"
+                  href="/login"
                   className="hidden text-sm font-medium sm:inline-flex"
                >
                   Login

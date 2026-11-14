@@ -75,7 +75,7 @@ export default function ClosingCta() {
                   </Link>
 
                   <Link
-                     href="#"
+                     href="/signup"
                      className={cn(
                         buttonVariants({ variant: "secondary", size: "lg" }),
                         "group h-10 px-6 text-sm",
