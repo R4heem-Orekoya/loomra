@@ -31,7 +31,7 @@ export default function Hero() {
 
                <motion.h1
                   {...copy(1)}
-                  className="font-heading [font-size:clamp(2rem,calc(14vw_-_7px),3.4rem)] leading-[0.92] font-medium tracking-tighter capitalize md:text-6xl md:leading-none lg:text-7xl"
+                  className="font-heading text-[clamp(2rem,calc(14vw-7px),3.4rem)] leading-[0.92] font-medium tracking-tighter capitalize md:text-6xl md:leading-none lg:text-7xl"
                >
                   Money, without <span className="text-[#0D5C3A]">borders</span>
                   .
@@ -40,7 +40,7 @@ export default function Hero() {
 
             <motion.p
                {...copy(2)}
-               className="max-w-xl text-pretty font-normal leading-snug tracking-tight text-muted-foreground md:mx-auto"
+               className="max-w-xl max-sm:text-sm text-pretty font-normal leading-snug tracking-tight text-muted-foreground md:mx-auto"
             >
                Hold dollars, euros, pounds and more in one account. Convert at
                the real exchange rate, send to 100+ countries in seconds, and
