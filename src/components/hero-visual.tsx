@@ -1,6 +1,9 @@
 import { NfcIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
+import { motion } from "motion/react";
 import Image from "next/image";
+import { useEntranceReady } from "@/lib/use-entrance-ready";
+import { useEntrance } from "@/lib/use-reveal";
 import { cn } from "@/lib/utils";
 import { CreditCardServiceProvider } from "./kibo-ui/credit-card";
 import UserAvatar from "./user-avatar";
@@ -8,6 +11,14 @@ import UserAvatar from "./user-avatar";
 type PanelProps = {
    className?: string;
 };
+
+/**
+ * The card lands first, then the two side panels follow, left then right. With
+ * `stagger: 1` a step is a second, so these delays read as written.
+ */
+const CARD_DELAY = 1.05;
+const LEFT_DELAY = 1.3;
+const RIGHT_DELAY = 1.44;
 
 const BALANCES = [
    { code: "USD", flag: "us", amount: "$6,420.00" },
@@ -17,6 +28,9 @@ const BALANCES = [
 ];
 
 export default function HeroVisual() {
+   const ready = useEntranceReady();
+   const entrance = useEntrance(ready, { stagger: 1 });
+
    return (
       <div
          aria-hidden="true"
@@ -25,9 +39,20 @@ export default function HeroVisual() {
          <div className="absolute inset-x-8 top-10 bottom-0 -z-10 rounded-[50%] bg-[#0D5C3A]/5 blur-3xl" />
 
          <div className="mx-auto grid max-w-md grid-cols-1 gap-3 sm:max-w-none sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-            <BalanceCard className="col-span-1 sm:col-span-2 lg:col-span-1 lg:-rotate-2 lg:translate-y-3" />
-            <VirtualCard className="col-span-1 lg:-translate-y-1" />
-            <ActivityCard className="col-span-1 lg:rotate-1 lg:translate-y-4" />
+            <motion.div
+               {...entrance(LEFT_DELAY)}
+               className="col-span-1 sm:col-span-2 lg:col-span-1"
+            >
+               <BalanceCard className="lg:-rotate-2 lg:translate-y-3" />
+            </motion.div>
+
+            <motion.div {...entrance(CARD_DELAY)} className="col-span-1">
+               <VirtualCard className="lg:-translate-y-1" />
+            </motion.div>
+
+            <motion.div {...entrance(RIGHT_DELAY)} className="col-span-1">
+               <ActivityCard className="lg:rotate-1 lg:translate-y-4" />
+            </motion.div>
          </div>
       </div>
    );

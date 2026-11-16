@@ -182,14 +182,14 @@ export default function Capabilities() {
       <section
          id="capabilities"
          aria-labelledby="capabilities-heading"
-         className="relative scroll-mt-24 overflow-x-clip py-24 lg:py-36"
+         className="relative scroll-mt-24 overflow-x-clip py-28 lg:py-36"
       >
          <div className="mx-auto w-full px-6">
             <header className="mx-auto flex max-w-5xl flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
                <div className="grid grid-cols-1 gap-8 lg:gap-12">
                   <h2
                      id="capabilities-heading"
-                     className="mt-3 min-w-0 text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl lg:text-5xl"
+                     className="mt-3 min-w-0 text-balance font-heading text-4xl font-medium tracking-tighter lg:text-5xl"
                   >
                      Hold, convert and send in one place.
                   </h2>

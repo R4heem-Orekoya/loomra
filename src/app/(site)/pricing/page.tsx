@@ -97,11 +97,11 @@ export default function PricingPage() {
 
          <FeesComparison />
 
-         <section className="px-6 py-24">
+         <section className="px-6 py-28">
             <div className="mx-auto w-full max-w-6xl">
                <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
                   <div>
-                     <h2 className="text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl">
+                     <h2 className="text-balance font-heading text-4xl font-medium tracking-tighter">
                         The whole price list.
                      </h2>
                      <p className="mt-4 max-w-sm text-pretty text-sm leading-relaxed text-muted-foreground">

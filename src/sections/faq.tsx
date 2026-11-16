@@ -96,13 +96,13 @@ export default function Faq() {
       <section
          id="faq"
          aria-labelledby="faq-heading"
-         className="scroll-mt-24 border-t border-border/60 py-24 lg:py-32"
+         className="scroll-mt-24 border-t border-border/60 py-28 lg:py-32"
       >
          <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)] lg:gap-20">
             <header className="lg:sticky lg:top-28 lg:self-start">
                <h2
                   id="faq-heading"
-                  className="max-w-md text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl lg:text-5xl"
+                  className="max-w-md text-balance font-heading text-4xl font-medium tracking-tighter lg:text-5xl"
                >
                   The things people ask before signing up.
                </h2>

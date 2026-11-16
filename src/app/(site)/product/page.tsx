@@ -152,14 +152,14 @@ export default function ProductPage() {
 
          <section
             id="currencies"
-            className="scroll-mt-24 border-border/60 px-6 py-24"
+            className="scroll-mt-24 border-border/60 px-6 py-28"
          >
             <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.15fr] lg:items-center lg:gap-16">
                <div>
                   <span className="text-sm font-medium text-muted-foreground">
                      Currencies
                   </span>
-                  <h2 className="mt-3 text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl">
+                  <h2 className="mt-3 text-balance font-heading text-4xl font-medium tracking-tighter">
                      40+ currencies, held side by side.
                   </h2>
                   <p className="mt-4 max-w-sm text-pretty text-sm leading-relaxed text-muted-foreground">
@@ -213,7 +213,7 @@ export default function ProductPage() {
                   <span className="text-sm font-medium text-muted-foreground">
                      Virtual cards
                   </span>
-                  <h2 className="mt-3 text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl">
+                  <h2 className="mt-3 text-balance font-heading text-4xl font-medium tracking-tighter">
                      A card for every corner of your spending.
                   </h2>
                   <p className="mt-4 max-w-md text-pretty text-sm leading-relaxed text-muted-foreground">

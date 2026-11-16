@@ -236,13 +236,13 @@ export default function SecurityPage() {
             </div>
          </section>
 
-         <section className="border-t border-border/50 px-6 py-24">
+         <section className="border-t border-border/50 px-6 py-28">
             <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
                <div>
                   <span className="text-sm font-medium text-muted-foreground">
                      Under the hood
                   </span>
-                  <h2 className="mt-3 text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl">
+                  <h2 className="mt-3 text-balance font-heading text-4xl font-medium tracking-tighter">
                      Three checks between you and the money leaving.
                   </h2>
                   <p className="mt-4 max-w-sm text-pretty text-sm leading-relaxed text-muted-foreground">

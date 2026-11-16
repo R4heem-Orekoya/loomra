@@ -1,11 +1,11 @@
 {
-  "version": 2,
-  "skills": {
-    "better-interface": {
-      "source": "jakubkrehel/skills",
-      "sourceType": "github",
-      "skillPath": "skills/better-interface/SKILL.md",
-      "computedHash": "37ae068dc11f7548c3064848cb6d97f4e4626e689ad374c192ddc05d11641c04"
-    }
-  }
+   "version": 2,
+   "skills": {
+      "better-interface": {
+         "source": "jakubkrehel/skills",
+         "sourceType": "github",
+         "skillPath": "skills/better-interface/SKILL.md",
+         "computedHash": "37ae068dc11f7548c3064848cb6d97f4e4626e689ad374c192ddc05d11641c04"
+      }
+   }
 }

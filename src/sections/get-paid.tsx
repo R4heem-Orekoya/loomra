@@ -50,7 +50,7 @@ export default function GetPaid() {
       <section
          id="how-it-works"
          aria-labelledby="get-paid-heading"
-         className="relative scroll-mt-24 py-24 lg:py-48"
+         className="relative scroll-mt-24 py-28 lg:py-48"
       >
          <div className="mx-auto w-full max-w-6xl px-6">
             <header className="mx-auto max-w-2xl text-center">
@@ -59,7 +59,7 @@ export default function GetPaid() {
                </span>
                <h2
                   id="get-paid-heading"
-                  className="mt-3 text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl lg:text-5xl"
+                  className="mt-3 text-balance font-heading text-4xl font-medium tracking-tighter lg:text-5xl"
                >
                   Get paid globally in{" "}
                   <span className="text-accent-strong">3 easy steps</span>.

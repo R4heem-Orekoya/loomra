@@ -112,13 +112,35 @@ export default function AboutPage() {
             </div>
          </section>
 
-         <section className="px-6 py-24">
+         <section className="px-6 pb-16">
+            <div className="mx-auto w-full max-w-6xl">
+               <figure className="relative overflow-hidden rounded-xl border border-border/70 bg-secondary">
+                  <Image
+                     src="/careers/team-workshop.jpg"
+                     alt="The Loomra team planning around a wall of sticky notes"
+                     width={1600}
+                     height={1000}
+                     quality={90}
+                     sizes="(min-width: 1152px) 1104px, 100vw"
+                     className="h-[300px] w-full object-cover object-center sm:h-[400px] lg:h-[520px]"
+                  />
+                  <figcaption className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/80 via-black/50 to-transparent p-5 sm:p-6">
+                     <p className="max-w-md text-pretty text-sm font-medium text-white">
+                        Most of what we ship starts on a wall of sticky notes
+                        and a long argument about exchange rates.
+                     </p>
+                  </figcaption>
+               </figure>
+            </div>
+         </section>
+
+         <section className="px-6 py-28">
             <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
                <div>
                   <span className="text-sm font-medium text-muted-foreground">
                      Why we started
                   </span>
-                  <h2 className="mt-3 text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl lg:text-5xl">
+                  <h2 className="mt-3 text-balance font-heading text-4xl font-medium tracking-tighter lg:text-5xl">
                      The border was never the hard part.
                   </h2>
                </div>
@@ -147,9 +169,9 @@ export default function AboutPage() {
             </div>
          </section>
 
-         <section className="px-6 py-32">
+         <section className="px-6 py-36">
             <div className="mx-auto w-full max-w-6xl">
-               <h2 className="max-w-md text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl">
+               <h2 className="max-w-md text-balance font-heading text-4xl font-medium tracking-tighter">
                   What we optimise for.
                </h2>
 
@@ -178,10 +200,10 @@ export default function AboutPage() {
             </div>
          </section>
 
-         <section id="team" className="scroll-mt-24 px-6 py-32">
+         <section id="team" className="scroll-mt-24 px-6 py-36">
             <div className="mx-auto w-full max-w-6xl">
                <div className="mx-auto max-w-2xl text-center">
-                  <h2 className="text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl">
+                  <h2 className="text-balance font-heading text-4xl font-medium tracking-tighter">
                      The people building it.
                   </h2>
                   <p className="mx-auto mt-4 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground">
@@ -204,7 +226,7 @@ export default function AboutPage() {
                   </dl>
                </div>
 
-               <ul className="mx-auto mt-20 grid w-full max-w-2xl grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-16">
+               <ul className="mx-auto mt-20 grid w-full max-w-2xl grid-cols-2 gap-x-8 gap-y-12 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-16">
                   {TEAM.map((person) => (
                      <li key={person.name}>
                         <figure className="group mx-auto w-full max-w-36">

@@ -1,10 +1,12 @@
 "use client";
 
 import NumberFlow from "@number-flow/react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useId, useState } from "react";
 import { transferFee } from "@/lib/fees";
+import { useReveal } from "@/lib/use-reveal";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "../components/ui/button";
 
@@ -16,6 +18,9 @@ type FeeRow = {
 
 const RATE = 0.9214;
 const PRESETS = [500, 1000, 2500];
+
+/** The two halves of the calculator slide in from their own side. */
+const PANEL_OFFSET = 20;
 
 const ROWS: FeeRow[] = [
    { label: "Transfer fee", loomra: "1.5% capped at $20", bank: "$25–$45" },
@@ -52,6 +57,28 @@ export default function FeesComparison() {
    const [amount, setAmount] = useState("1000");
    const [editing, setEditing] = useState(false);
 
+   const copy = useReveal();
+   const card = useReveal({
+      stagger: 0.12,
+      duration: 0.6,
+      offset: 16,
+      blur: 0,
+      amount: 0.25,
+   });
+   const table = useReveal({
+      duration: 0.6,
+      offset: 12,
+      blur: 0,
+      amount: 0.25,
+   });
+   const rows = useReveal({
+      stagger: 0.14,
+      duration: 0.55,
+      offset: 10,
+      blur: 4,
+      amount: 0.5,
+   });
+
    const sent = parseAmount(amount);
    const fee = transferFee(sent);
    const received = Math.round(sent * RATE * 100) / 100;
@@ -62,22 +89,30 @@ export default function FeesComparison() {
       <section
          id="fees"
          aria-labelledby="fees-heading"
-         className="scroll-mt-24 py-24 lg:py-32 bg-emerald-950"
+         data-reveal="off"
+         className="scroll-mt-24 py-28 lg:py-32 bg-emerald-950"
       >
          <div className="mx-auto w-full max-w-6xl px-6">
             <header className="mx-auto max-w-4xl text-center">
-               <h2
+               <motion.h2
+                  {...copy(0)}
                   id="fees-heading"
                   className="mt-3 text-balance font-heading text-background text-3xl font-medium tracking-tighter sm:text-4xl lg:text-5xl"
                >
                   The same transfer. A very different receipt.
-               </h2>
-               <p className="mx-auto mt-4 max-w-md text-pretty text-sm md:text-lg leading-relaxed dark text-muted-foreground">
+               </motion.h2>
+               <motion.p
+                  {...copy(1)}
+                  className="mx-auto mt-4 max-w-md text-pretty text-sm md:text-lg leading-relaxed dark text-muted-foreground"
+               >
                   Hold, convert and send at the real exchange rate. Run the
                   numbers before you sign up.
-               </p>
+               </motion.p>
 
-               <div className="mx-auto mt-12 flex flex-col items-center justify-center gap-3 dark sm:flex-row sm:gap-0">
+               <motion.div
+                  {...copy(2)}
+                  className="mx-auto mt-12 flex flex-col items-center justify-center gap-3 dark sm:flex-row sm:gap-0"
+               >
                   <Link
                      href="/signup"
                      className={cn(
@@ -96,13 +131,23 @@ export default function FeesComparison() {
                   >
                      Learn how to send money
                   </Link>
-               </div>
+               </motion.div>
             </header>
 
-            <div className="mx-auto mt-12 max-w-3xl">
+            <motion.div
+               {...card(0)}
+               initial={{ opacity: 0, y: 16, scale: 0.98 }}
+               whileInView={{ opacity: 1, y: 0, scale: 1 }}
+               className="mx-auto mt-12 max-w-3xl"
+            >
                <div className="overflow-hidden rounded-xl border bg-background">
                   <div className="grid grid-cols-1 sm:grid-cols-2">
-                     <div className="px-5 py-5 focus-within:bg-neutral-50/60 sm:px-6">
+                     <motion.div
+                        {...card(1)}
+                        initial={{ opacity: 0, x: -PANEL_OFFSET }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        className="px-5 py-5 focus-within:bg-neutral-50/60 sm:px-6"
+                     >
                         <div className="flex items-center justify-between">
                            <label
                               htmlFor={amountId}
@@ -196,9 +241,14 @@ export default function FeesComparison() {
                               </button>
                            ))}
                         </div>
-                     </div>
+                     </motion.div>
 
-                     <div className="border-t border-neutral-200/80 px-5 py-5 sm:border-t-0 sm:border-l sm:px-6">
+                     <motion.div
+                        {...card(2)}
+                        initial={{ opacity: 0, x: PANEL_OFFSET }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        className="border-t border-neutral-200/80 px-5 py-5 sm:border-t-0 sm:border-l sm:px-6"
+                     >
                         <div className="flex items-center justify-between">
                            <span className="text-xs font-medium tracking-tight text-muted-foreground">
                               They receive
@@ -246,10 +296,13 @@ export default function FeesComparison() {
                            Converted and sent in seconds. The fee is shown up
                            front and capped at $20.
                         </p>
-                     </div>
+                     </motion.div>
                   </div>
 
-                  <dl className="grid grid-cols-3 divide-x divide-neutral-200/80 border-t border-neutral-200/80 bg-neutral-50 text-xs">
+                  <motion.dl
+                     {...card(3)}
+                     className="grid grid-cols-1 divide-y divide-neutral-200/80 border-t border-neutral-200/80 bg-neutral-50 text-xs sm:grid-cols-3 sm:divide-x sm:divide-y-0"
+                  >
                      <div className="px-4 py-3 sm:px-5">
                         <dt className="text-muted-foreground">Rate</dt>
                         <dd className="mt-0.5 font-medium tracking-tight tabular-nums">
@@ -268,16 +321,19 @@ export default function FeesComparison() {
                            In seconds
                         </dd>
                      </div>
-                  </dl>
+                  </motion.dl>
                </div>
-            </div>
+            </motion.div>
 
             <p className="mt-3 px-0.5 text-center dark text-xs text-muted-foreground">
                Indicative rate. The live rate is shown in the app before you
                confirm.
             </p>
 
-            <div className="mx-auto mt-12 max-w-3xl overflow-hidden rounded-lg border bg-background">
+            <motion.div
+               {...table(0)}
+               className="mx-auto mt-12 max-w-3xl overflow-hidden rounded-lg border bg-background"
+            >
                <table className="w-full border-separate border-spacing-0 text-left text-sm">
                   <caption className="sr-only">
                      Cost of a ${sentLabel} transfer with Loomra compared with a
@@ -285,49 +341,62 @@ export default function FeesComparison() {
                   </caption>
 
                   <thead>
-                     <tr>
+                     <motion.tr {...rows(0)}>
                         <th
+                           key="cost"
                            scope="col"
                            className="w-[38%] px-3 py-3.5 text-base font-medium tracking-tighter sm:px-6"
                         >
                            Cost
                         </th>
                         <th
+                           key="bank"
                            scope="col"
                            className="px-3 py-3.5 text-base font-medium tracking-tighter sm:px-6"
                         >
                            Typical bank
                         </th>
                         <th
+                           key="loomra"
                            scope="col"
                            className="border-l px-3 py-3.5 text-base font-medium tracking-tighter sm:px-6"
                         >
                            Loomra
                         </th>
-                     </tr>
+                     </motion.tr>
                   </thead>
 
                   <tbody>
-                     {ROWS.map((row) => (
-                        <tr key={row.label}>
+                     {ROWS.map((row, index) => (
+                        <motion.tr {...rows(1 + index)} key={row.label}>
                            <th
+                              key="label"
                               scope="row"
                               className="border-t border-border/80 px-3 py-3.5 font-normal tracking-tight sm:px-6"
                            >
                               {row.label}
                            </th>
-                           <td className="border-t font-medium text-orange-700 border-border/80 px-3 py-3.5 sm:px-6">
+                           <td
+                              key="bank"
+                              className="border-t font-medium text-orange-700 border-border/80 px-3 py-3.5 sm:px-6"
+                           >
                               {row.bank}
                            </td>
-                           <td className="border-t border-border/80 text-emerald-700 border-l px-3 py-3.5 font-medium sm:px-6">
+                           <td
+                              key="loomra"
+                              className="border-t border-border/80 text-emerald-700 border-l px-3 py-3.5 font-medium sm:px-6"
+                           >
                               {row.loomra}
                            </td>
-                        </tr>
+                        </motion.tr>
                      ))}
                   </tbody>
                </table>
 
-               <div className="flex flex-col gap-4 border-t border-neutral-200/70 bg-neutral-50 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+               <motion.div
+                  {...rows(ROWS.length + 1)}
+                  className="flex flex-col gap-4 border-t border-neutral-200/70 bg-neutral-50 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6"
+               >
                   <div>
                      <p className="font-heading text-sm font-medium tracking-tight">
                         {savings > 0 ? (
@@ -347,8 +416,8 @@ export default function FeesComparison() {
                      </p>
                   </div>
                   <Button className="w-fit shrink-0">Open an account</Button>
-               </div>
-            </div>
+               </motion.div>
+            </motion.div>
          </div>
       </section>
    );

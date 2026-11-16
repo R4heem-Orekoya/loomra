@@ -109,7 +109,7 @@ export default function PressPage() {
             </div>
          </section>
 
-         <section className="border-t border-border/60 px-6 py-24">
+         <section className="border-t border-border/60 px-6 py-28">
             <div className="mx-auto w-full max-w-6xl">
                <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
                   <HugeiconsIcon

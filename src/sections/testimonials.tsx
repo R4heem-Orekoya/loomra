@@ -114,13 +114,13 @@ export default function Testimonials() {
       <section
          id="testimonials"
          aria-labelledby="testimonials-heading"
-         className="scroll-mt-24 py-24 lg:py-48"
+         className="scroll-mt-24 py-28 lg:py-48"
       >
          <div className="mx-auto w-full max-w-6xl px-6">
             <header className="mx-auto max-w-2xl text-center">
                <h2
                   id="testimonials-heading"
-                  className="mt-3 text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl lg:text-5xl"
+                  className="mt-3 text-balance font-heading text-4xl font-medium tracking-tighter lg:text-5xl"
                >
                   Money that works across time zones.
                </h2>

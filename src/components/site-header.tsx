@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight01Icon, Menu01Icon } from "@hugeicons/core-free-icons";
+import { Menu01Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
    motion,
@@ -11,7 +11,9 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { isGroupActive, NAV_GROUPS, PRIMARY_LINKS } from "@/lib/nav";
 import { cn } from "@/lib/utils";
+import MobileNav from "./mobile-nav";
 import { Button, buttonVariants } from "./ui/button";
 import {
    NavigationMenu,
@@ -21,26 +23,6 @@ import {
    NavigationMenuList,
    NavigationMenuTrigger,
 } from "./ui/navigation-menu";
-import {
-   Sheet,
-   SheetContent,
-   SheetDescription,
-   SheetFooter,
-   SheetHeader,
-   SheetTitle,
-   SheetTrigger,
-} from "./ui/sheet";
-
-type NavLink = {
-   label: string;
-   href: string;
-   description?: string;
-};
-
-type NavGroup = {
-   label: string;
-   links: NavLink[];
-};
 
 const SCROLL_THRESHOLD = 16;
 
@@ -73,59 +55,6 @@ const navbarVariants = {
       backdropFilter: "blur(16px) saturate(180%)",
    },
 };
-
-const NAV_GROUPS: NavGroup[] = [
-   {
-      label: "Product",
-      links: [
-         {
-            label: "The account",
-            href: "/product",
-            description: "Hold 40+ currencies in one balance.",
-         },
-         {
-            label: "Send money",
-            href: "/product#how-it-works",
-            description: "Local rails in 100+ countries.",
-         },
-         {
-            label: "Virtual cards",
-            href: "/product#cards",
-            description: "Spend online with cards you control.",
-         },
-      ],
-   },
-   {
-      label: "Company",
-      links: [
-         {
-            label: "About",
-            href: "/about",
-            description: "Why we're building Loomra.",
-         },
-         {
-            label: "Careers",
-            href: "/careers",
-            description: "Open roles and how we hire.",
-         },
-         {
-            label: "Press",
-            href: "/press",
-            description: "Brand assets and press contact.",
-         },
-         {
-            label: "Blog",
-            href: "/blog",
-            description: "Guides to moving money well.",
-         },
-      ],
-   },
-];
-
-const PRIMARY_LINKS: NavLink[] = [
-   { label: "Pricing", href: "/pricing" },
-   { label: "Security", href: "/security" },
-];
 
 export default function SiteHeader({
    routeDark = false,
@@ -188,7 +117,7 @@ export default function SiteHeader({
                      <NavigationMenuItem key={group.label}>
                         <NavigationMenuTrigger
                            className={cn(
-                              "h-8 px-3 text-sm tracking-tighter",
+                              "h-7 pl-3 pr-3.5 text-sm tracking-tighter",
                               isGroupActive(pathname, group) &&
                                  "text-foreground",
                            )}
@@ -206,16 +135,28 @@ export default function SiteHeader({
                                              ? "page"
                                              : undefined
                                        }
-                                       className="flex-col items-start gap-0.5 px-3 py-2"
+                                       className="items-start gap-2.5 px-3 py-2"
                                     >
-                                       <span className="text-sm font-medium tracking-tight">
-                                          {link.label}
-                                       </span>
-                                       {link.description ? (
-                                          <span className="text-xs leading-relaxed text-muted-foreground">
-                                             {link.description}
-                                          </span>
+                                       {link.icon ? (
+                                          <link.icon.glyph
+                                             weight="fill"
+                                             aria-hidden="true"
+                                             className={cn(
+                                                "mt-0.5 size-4 shrink-0",
+                                                link.icon.className,
+                                             )}
+                                          />
                                        ) : null}
+                                       <span className="flex flex-col gap-0.5">
+                                          <span className="text-sm font-medium tracking-tight">
+                                             {link.label}
+                                          </span>
+                                          {link.description ? (
+                                             <span className="text-xs leading-relaxed text-muted-foreground">
+                                                {link.description}
+                                             </span>
+                                          ) : null}
+                                       </span>
                                     </NavigationMenuLink>
                                  </li>
                               ))}
@@ -232,7 +173,7 @@ export default function SiteHeader({
                               pathname === link.href ? "page" : undefined
                            }
                            className={cn(
-                              "inline-flex h-8 items-center rounded-lg px-3 text-sm tracking-tighter",
+                              "inline-flex h-7 items-center rounded-full px-3 text-sm tracking-tighter",
                               "transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
                               pathname === link.href
                                  ? "bg-muted/60 text-foreground"
@@ -246,7 +187,7 @@ export default function SiteHeader({
                </NavigationMenuList>
             </NavigationMenu>
 
-            <div className="ml-auto flex items-center gap-1.5 sm:gap-3">
+            <div className="absolute right-1 flex items-center gap-1.5 sm:gap-3">
                <Link
                   href="/login"
                   className="hidden text-sm font-medium tracking-tight transition-colors hover:text-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:inline-flex"
@@ -265,153 +206,21 @@ export default function SiteHeader({
                   Open an account
                </Link>
 
-               <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-                  <SheetTrigger
-                     render={
-                        <Button
-                           variant="ghost"
-                           size="icon-lg"
-                           className="md:hidden"
-                           aria-label="Open menu"
-                        />
-                     }
-                  >
-                     <HugeiconsIcon icon={Menu01Icon} strokeWidth={1.8} />
-                  </SheetTrigger>
-
-                  <SheetContent
-                     side="right"
-                     className={cn(
-                        "w-[min(88vw,22rem)] gap-0 bg-background p-0 dark:bg-background",
-                        routeDark && "dark",
-                     )}
-                  >
-                     <SheetHeader className="border-b border-border/70 p-5 pr-14">
-                        <SheetTitle className="text-base">Menu</SheetTitle>
-                        <SheetDescription>
-                           Hold, send and spend in one account.
-                        </SheetDescription>
-                     </SheetHeader>
-
-                     <nav
-                        aria-label="Mobile navigation"
-                        className="flex-1 overflow-y-auto p-3"
-                     >
-                        {NAV_GROUPS.map((group) => (
-                           <div key={group.label} className="py-2">
-                              <p className="px-2 pb-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                                 {group.label}
-                              </p>
-                              <ul>
-                                 {group.links.map((link) => (
-                                    <li key={link.href}>
-                                       <MobileLink
-                                          link={link}
-                                          pathname={pathname}
-                                          onNavigate={() => setMenuOpen(false)}
-                                       />
-                                    </li>
-                                 ))}
-                              </ul>
-                           </div>
-                        ))}
-
-                        <div className="py-2">
-                           <p className="px-2 pb-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                              Loomra
-                           </p>
-                           <ul>
-                              {PRIMARY_LINKS.map((link) => (
-                                 <li key={link.href}>
-                                    <MobileLink
-                                       link={link}
-                                       pathname={pathname}
-                                       onNavigate={() => setMenuOpen(false)}
-                                    />
-                                 </li>
-                              ))}
-                              {[
-                                 { label: "Help centre", href: "/help" },
-                                 { label: "Contact", href: "/contact" },
-                              ].map((link) => (
-                                 <li key={link.href}>
-                                    <MobileLink
-                                       link={link}
-                                       pathname={pathname}
-                                       onNavigate={() => setMenuOpen(false)}
-                                    />
-                                 </li>
-                              ))}
-                           </ul>
-                        </div>
-                     </nav>
-
-                     <SheetFooter className="gap-2 border-t border-border/70 p-4">
-                        <Link
-                           href="/login"
-                           onClick={() => setMenuOpen(false)}
-                           className={cn(
-                              buttonVariants({
-                                 variant: "outline",
-                                 size: "lg",
-                              }),
-                              "h-10 w-full",
-                           )}
-                        >
-                           Log in
-                        </Link>
-                        <Link
-                           href="/signup"
-                           onClick={() => setMenuOpen(false)}
-                           className={cn(
-                              buttonVariants({ size: "lg" }),
-                              "h-10 w-full",
-                           )}
-                        >
-                           Open an account
-                           <HugeiconsIcon
-                              icon={ArrowUpRight01Icon}
-                              strokeWidth={1.8}
-                              data-icon="inline-end"
-                           />
-                        </Link>
-                     </SheetFooter>
-                  </SheetContent>
-               </Sheet>
+               <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon-lg"
+                  className="md:hidden"
+                  aria-label={menuOpen ? "Close menu" : "Open menu"}
+                  aria-expanded={menuOpen}
+                  onClick={() => setMenuOpen((open) => !open)}
+               >
+                  <HugeiconsIcon icon={Menu01Icon} strokeWidth={1.8} />
+               </Button>
             </div>
          </motion.nav>
+
+         <MobileNav open={menuOpen} onClose={() => setMenuOpen(false)} />
       </header>
-   );
-}
-
-function isGroupActive(pathname: string, group: NavGroup) {
-   return group.links.some((link) => pathname === link.href.split("#")[0]);
-}
-
-function MobileLink({
-   link,
-   pathname,
-   onNavigate,
-}: {
-   link: NavLink;
-   pathname: string;
-   onNavigate: () => void;
-}) {
-   const active = pathname === link.href.split("#")[0];
-
-   return (
-      <Link
-         href={link.href}
-         onClick={onNavigate}
-         aria-current={active ? "page" : undefined}
-         className={cn(
-            "flex min-h-10 items-center justify-between rounded-lg px-2 text-sm font-medium tracking-tight transition-colors",
-            active
-               ? "bg-muted text-foreground"
-               : "text-foreground/80 hover:bg-muted/60 hover:text-foreground",
-         )}
-      >
-         {link.label}
-      </Link>
    );
 }

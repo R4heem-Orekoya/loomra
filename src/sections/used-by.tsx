@@ -132,7 +132,8 @@ export default function UsedBy() {
          <section
             id="used-by"
             aria-labelledby="used-by-heading"
-            className="py-24 lg:py-32"
+            data-reveal="off"
+            className="py-28 lg:py-32"
          >
             <UsedByHeader />
             <ul className="mx-auto mt-12 grid w-full max-w-6xl grid-cols-1 px-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -153,6 +154,7 @@ export default function UsedBy() {
       <section
          id="used-by"
          aria-labelledby="used-by-heading"
+         data-reveal="off"
          className="relative"
       >
          <div
@@ -176,7 +178,7 @@ export default function UsedBy() {
                            key={audience.title}
                            audience={audience}
                            index={index}
-                           className="w-[72vw] sm:w-[min(44vw,32rem,60svh)]"
+                           className="w-[calc(100vw-3rem)] sm:w-[min(44vw,32rem,60svh)]"
                         />
                      ))}
                   </ul>
@@ -197,7 +199,7 @@ function UsedByHeader() {
                </span>
                <h2
                   id="used-by-heading"
-                  className="mt-2 max-w-xl text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl lg:text-5xl"
+                  className="mt-2 max-w-xl text-balance font-heading text-4xl font-medium tracking-tighter lg:text-5xl"
                >
                   People who move money across borders.
                </h2>
@@ -230,7 +232,7 @@ function AudienceCard({
             src={audience.image}
             alt={audience.alt}
             fill
-            sizes="(max-width: 640px) 72vw, 44vw"
+            sizes="(max-width: 640px) calc(100vw - 3rem), 44vw"
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
          />
 

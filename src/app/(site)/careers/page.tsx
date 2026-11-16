@@ -132,10 +132,10 @@ export default function CareersPage() {
             </div>
          </section>
 
-         <section id="open-roles" className="scroll-mt-24 px-6 py-24">
+         <section id="open-roles" className="scroll-mt-24 px-6 py-28">
             <div className="mx-auto w-full max-w-6xl">
                <div className="flex flex-wrap items-end justify-between gap-4">
-                  <h2 className="text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl">
+                  <h2 className="text-balance font-heading text-4xl font-medium tracking-tighter">
                      Open roles.
                   </h2>
                   <p className="text-xs text-muted-foreground">
@@ -213,10 +213,10 @@ export default function CareersPage() {
             </div>
          </section>
 
-         <section className="px-6 py-32">
+         <section className="px-6 py-36">
             <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
                <div>
-                  <h2 className="text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl">
+                  <h2 className="text-balance font-heading text-4xl font-medium tracking-tighter">
                      How we hire.
                   </h2>
                   <p className="mt-4 max-w-sm text-pretty text-sm leading-relaxed text-muted-foreground">

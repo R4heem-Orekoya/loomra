@@ -23,10 +23,10 @@ export default function PageCta({
    secondaryHref = "/contact",
 }: PageCtaProps) {
    return (
-      <section className="px-6 pt-8 pb-24 lg:pt-12">
+      <section className="px-6 pt-8 pb-28 lg:pt-12">
          <div className="mx-auto w-full max-w-6xl">
-            <div className="relative isolate overflow-hidden px-6 py-14 md:py-20 lg:py-24 text-center sm:px-12">
-               <h2 className="mx-auto max-w-xl text-balance font-heading text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+            <div className="relative isolate overflow-hidden px-6 py-16 text-center sm:px-12 md:py-20 lg:py-24">
+               <h2 className="mx-auto max-w-xl text-balance font-heading text-4xl font-medium tracking-tighter md:text-5xl lg:text-6xl">
                   {title}
                </h2>
 
