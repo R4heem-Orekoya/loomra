@@ -31,7 +31,7 @@ export default function Hero() {
 
                <motion.h1
                   {...copy(1)}
-                  className="font-heading text-[3.4rem] leading-[0.92] font-medium tracking-tighter capitalize md:text-6xl md:leading-none lg:text-7xl"
+                  className="font-heading [font-size:clamp(2rem,calc(14vw_-_7px),3.4rem)] leading-[0.92] font-medium tracking-tighter capitalize md:text-6xl md:leading-none lg:text-7xl"
                >
                   Money, without <span className="text-[#0D5C3A]">borders</span>
                   .
